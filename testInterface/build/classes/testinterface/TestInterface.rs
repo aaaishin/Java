@@ -1,0 +1,4 @@
+testinterface.Rectangle
+testinterface.Shape
+testinterface.TestInterface
+testinterface.Circle

@@ -1,0 +1,80 @@
+import  java.io.*;
+
+interface Car {
+    
+    public double move();
+    public void action ();
+
+}
+
+interface Boat {
+   
+    public double move();
+    
+}
+
+class CarImpl implements Car {
+    String carname;
+    double distance;
+    
+    @Override
+    public double move() {
+        System.out.println("Car is moving " +distance);
+        return distance;
+    }
+
+    @Override
+    public void action() {
+        System.out.println("Car is honking!");
+        
+    }
+    
+}
+
+
+class BoatImpl implements Boat {
+    String boatName;
+    double distance;
+    
+    @Override
+    public double move() {
+        System.out.println("Boat is sailing " +distance);
+        return distance;
+    }
+    
+}
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader read = new BufferedReader (new InputStreamReader(System.in)); 
+        
+        String choice;
+        while(true){
+            System.out.println("Create a car or a boat (or quit): ");
+            choice = read.readLine();
+            CarImpl a = new CarImpl ();
+            BoatImpl b = new BoatImpl();
+            if  (choice.equalsIgnoreCase("Car")){
+                System.out.print("Enter name of the Car: ");
+                a.carname = read.readLine();
+                System.out.print("Enter distance to move (in meters): ");
+                a.distance = Double.parseDouble(read.readLine());
+                a.move();
+                a.action();
+            }
+            else if (choice.equalsIgnoreCase("Boat")){
+                System.out.print("Enter name of the Boat: ");
+                b.boatName= read.readLine();
+                System.out.print("Enter distance to move: ");
+                b.distance = Double.parseDouble(read.readLine());
+                b.move();
+            }
+            else if (choice.equalsIgnoreCase("Quit")){
+                System.exit(0);
+            }
+            else{
+                System.out.println("Try Again.");
+            }
+        }
+    }
+}

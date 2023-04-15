@@ -1,0 +1,115 @@
+
+package shapes;
+
+
+public class Rectangle implements shapes{
+    double length;
+    double width;
+   
+    @Override
+    public double calculateArea(){
+       
+        System.out.println(length*width);
+        return 0;
+    }
+    
+    @Override
+    public double calculatePerimeter (){
+        System.out.println( 2*(length+width));
+        return 0;
+    }
+}
+----------------------------
+
+package shapes;
+
+
+public class Square implements shapes {
+    double side;
+    
+    @Override
+    public double calculateArea(){
+        System.out.println(side*side);
+        return 0;
+    }
+    @Override
+    public double calculatePerimeter(){
+        System.out.println(4*side);
+        return 0;
+    }
+}
+-----------------------------
+
+package shapes;
+
+
+public class Circle implements shapes{
+    double radius;
+    
+    @Override
+    public double calculateArea(){
+        System.out.println(Math.PI*(radius*radius));
+        return 0;
+    }
+    @Override
+    public double calculatePerimeter(){
+        System.out.println( 2*Math.PI*radius);
+        return 0;
+    }
+}
+--------------------------------
+
+package shapes;
+
+public interface shapes {
+   
+    
+    
+    public double calculateArea();
+    public double calculatePerimeter();
+}
+---------------------------------
+
+package shapes;
+import java.io.*;
+public class main {
+    public static void main(String[] args) throws IOException {
+    BufferedReader read = new BufferedReader (new InputStreamReader(System.in)); 
+    
+    Rectangle a = new Rectangle ();
+    Square b = new Square ();
+    Circle c = new Circle ();
+    
+    System.out.println("R for Rectangle,S for Square, C for Circle ");
+    System.out.println("Enter shape:");
+    String shp = read.readLine();
+    
+    if (shp.equalsIgnoreCase("R")){
+        System.out.print("Insert length:");
+        a.length = Double.parseDouble(read.readLine());
+        System.out.print("Insert width: ");
+        a.width = Double.parseDouble(read.readLine());
+        a.calculateArea();
+        a.calculatePerimeter();
+    }
+    else if (shp.equalsIgnoreCase("S")){
+        System.out.print("Insert side:");
+        b.side = Double.parseDouble(read.readLine());
+        b.calculateArea();
+        b.calculatePerimeter();
+    }
+    else if (shp.equalsIgnoreCase("C")){
+        System.out.print("Insert radius:");
+        c.radius = Double.parseDouble(read.readLine());
+        c.calculateArea();
+        c.calculatePerimeter();
+    }
+    else {
+        System.out.println("Invalid Shape!!! Run again~~");
+    }
+    
+   
+    
+    }
+}
+
