@@ -1,122 +1,81 @@
 package testabstraction;
 import java.io.*;
 
-abstract class Car {
-    String carName;
-    double carMovement;
+interface Car {
     
-    public Car(String carName, double carMovement){
-        this.carName = carName;
-        this.carMovement = carMovement;
-    }
-    
-    public String getcarName(){
-        return carName;
-    }
-    public double getcarMovement(){
-        return carMovement;
-    }
-    
-    public abstract void makecarAction();
+    public double move();
+    public void action ();
+
+}
+
+interface Boat {
+   
+    public double move();
     
 }
 
-class Hilux extends Car{
-    public Hilux(String carName, double carMovement){
-        super(carName,carMovement);
-    }
+class CarImpl implements Car {
+    String carname;
+    double distance;
     
-    public String getcarName(){
-        return carName;
-    }
-            
     @Override
-    public void makecarAction() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public double move() {
+        System.out.println("Car is moving " +distance);
+        return distance;
     }
-}
 
-class Toyota extends Car{
-    public Toyota(String carName, double carMovement){
-        super(carName,carMovement);
+    @Override
+    public void action() {
+        System.out.println("Car is honking!");
+        
     }
     
-    public String getcarName(){
-        return carName;
-    }
-            
-    @Override
-    public void makecarAction() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
 
-abstract class Boat {
+
+class BoatImpl implements Boat {
     String boatName;
-    double boatMovement;
-    String boatAction;
+    double distance;
     
-    public Boat(String boatName, double boatMovement){
-        this.boatName = boatName;
-        this.boatMovement = boatMovement;
-    }
-    
-    public String getboatName(){
-        return boatName;
-    }
-    public double getboatMovement(){
-        return boatMovement;
-    }
-    
-    public abstract void makeboatAction();
-    
-}
-
-class Hilux extends Car{
-    public Hilux(String carName, double carMovement){
-        super(carName,carMovement);
-    }
-    
-    public String getcarName(){
-        return carName;
-    }
-            
     @Override
-    public void makecarAction() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public double move() {
+        System.out.println("Boat is sailing " +distance);
+        return distance;
     }
+    
 }
-
-
 
 public class TestAbstraction {
-
     public static void main(String[] args) throws IOException {
         BufferedReader read = new BufferedReader (new InputStreamReader(System.in)); 
-
         
-                
-        System.out.println("1 For Circle and 2 for Rectangle");
-        System.out.print("Enter shape: ");
-        String shp = read.readLine();
-
-        if (shp.equalsIgnoreCase("1")){
-            System.out.print("Insert length:");
-            a.length = Double.parseDouble(read.readLine());
-            System.out.print("Insert width: ");
-            a.width = Double.parseDouble(read.readLine());
-            a.getArea();
-            a.getPerimeter();
+        String choice;
+        while(true){
+            System.out.println("Create a car or a boat (or quit): ");
+            choice = read.readLine();
+            CarImpl a = new CarImpl ();
+            BoatImpl b = new BoatImpl();
+            if  (choice.equalsIgnoreCase("Car")){
+                System.out.print("Enter name of the Car: ");
+                a.carname = read.readLine();
+                System.out.print("Enter distance to move (in meters): ");
+                a.distance = Double.parseDouble(read.readLine());
+                a.move();
+                a.action();
+            }
+            else if (choice.equalsIgnoreCase("Boat")){
+                System.out.print("Enter name of the Boat: ");
+                b.boatName= read.readLine();
+                System.out.print("Enter distance to move: ");
+                b.distance = Double.parseDouble(read.readLine());
+                b.move();
+            }
+            else if (choice.equalsIgnoreCase("Quit")){
+                System.exit(0);
+            }
+            else{
+                System.out.println("Try Again.");
+            }
         }
-        else if (shp.equalsIgnoreCase("2")){
-            System.out.print("Insert radius:");
-            c.radius = Double.parseDouble(read.readLine());
-            c.getArea();
-            c.getPerimeter();
-        }
-        else {
-            System.out.println("Invalid Shape!!! Run again~~");
-        }
-
     }
 }
