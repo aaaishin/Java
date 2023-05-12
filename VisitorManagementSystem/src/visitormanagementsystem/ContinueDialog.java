@@ -5,6 +5,12 @@
 package visitormanagementsystem;
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,6 +21,9 @@ public class ContinueDialog extends javax.swing.JFrame {
     /**
      * Creates new form ExitDialog
      */
+    
+    ImageIcon logo = new ImageIcon("C:\\Users\\justi\\Desktop\\Programming\\Java\\VisitorManagementSystem\\src\\assets\\SJCF_LOGO.png");
+    
     public ContinueDialog() {
         initComponents();
         setBackground(new Color(0,0,0,0));
@@ -66,8 +75,47 @@ public class ContinueDialog extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void continueButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continueButtonMouseClicked
-        this.setVisible(false);
-        new Dashboard().setVisible(true);
+        Dashboard dashboard = new Dashboard();
+        try{
+            String database = "SELECT COUNT(*) AS visitorCount FROM visitor";
+            Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+            PreparedStatement pst = con.prepareStatement(database);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                int count = rs.getInt("visitorCount");
+                dashboard.visitorCounter.setText(String.valueOf(count));
+            }
+            
+            dashboard.setVisible(true);
+            this.setVisible(false);
+            rs.close();
+            pst.close();
+            con.close();
+        
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+        }
+        try{
+            String database = "SELECT COUNT(*) AS elderlyCount FROM elderly";
+            Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+            PreparedStatement pst = con.prepareStatement(database);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                int count = rs.getInt("elderlyCount");
+                dashboard.elderlyCounter.setText(String.valueOf(count));
+            }
+            
+            dashboard.setVisible(true);
+            this.setVisible(false);
+            rs.close();
+            pst.close();
+            con.close();
+        
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+        }
     }//GEN-LAST:event_continueButtonMouseClicked
 
     /**

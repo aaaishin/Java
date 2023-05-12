@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.3.final using JasperReports Library version 6.20.3-415f9428cffdb6805c6f85bbb29ebaf18813a2ab  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="VisitorReport" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="611cb931-ae96-4e7c-8bfe-ce3e2a2844fb">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Project Report"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT visitor.VisitorID, visitor.FirstName, visitor.MiddleName, visitor.LastName, visitor.SuffixName, visitor.Gender, visitor.BirthDate, visitor.Relationship, visitor.ContactNo, visitor.Email, visitor.Street, visitor.Barangay, visitor.CityMunicipality, visitor.Province, dateofvisit.ElderlyID, dateofvisit.VisitDate, dateofvisit.VisitTime FROM visitor JOIN dateofvisit ON visitor.VisitorID = dateofvisit.VisitorID]]>
+	</queryString>
+	<field name="VisitorID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="VisitorID"/>
+		<property name="com.jaspersoft.studio.field.label" value="VisitorID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitor"/>
+	</field>
+	<field name="FirstName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="FirstName"/>
+		<property name="com.jaspersoft.studio.field.label" value="FirstName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitor"/>
+	</field>
+	<field name="MiddleName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="MiddleName"/>
+		<property name="com.jaspersoft.studio.field.label" value="MiddleName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitor"/>
+	</field>
+	<field name="LastName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="LastName"/>
+		<property name="com.jaspersoft.studio.field.label" value="LastName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitor"/>
+	</field>
+	<field name="SuffixName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="SuffixName"/>
+		<property name="com.jaspersoft.studio.field.label" value="SuffixName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitor"/>
+	</field>
+	<field name="Gender" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Gender"/>
+		<property name="com.jaspersoft.studio.field.label" value="Gender"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitor"/>
+	</field>
+	<field name="BirthDate" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="BirthDate"/>
+		<property name="com.jaspersoft.studio.field.label" value="BirthDate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitor"/>
+	</field>
+	<field name="Relationship" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Relationship"/>
+		<property name="com.jaspersoft.studio.field.label" value="Relationship"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitor"/>
+	</field>
+	<field name="ContactNo" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="ContactNo"/>
+		<property name="com.jaspersoft.studio.field.label" value="ContactNo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitor"/>
+	</field>
+	<field name="Email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Email"/>
+		<property name="com.jaspersoft.studio.field.label" value="Email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitor"/>
+	</field>
+	<field name="Street" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Street"/>
+		<property name="com.jaspersoft.studio.field.label" value="Street"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitor"/>
+	</field>
+	<field name="Barangay" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Barangay"/>
+		<property name="com.jaspersoft.studio.field.label" value="Barangay"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitor"/>
+	</field>
+	<field name="CityMunicipality" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CityMunicipality"/>
+		<property name="com.jaspersoft.studio.field.label" value="CityMunicipality"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitor"/>
+	</field>
+	<field name="Province" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Province"/>
+		<property name="com.jaspersoft.studio.field.label" value="Province"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitor"/>
+	</field>
+	<field name="ElderlyID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ElderlyID"/>
+		<property name="com.jaspersoft.studio.field.label" value="ElderlyID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dateofvisit"/>
+	</field>
+	<field name="VisitDate" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="VisitDate"/>
+		<property name="com.jaspersoft.studio.field.label" value="VisitDate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dateofvisit"/>
+	</field>
+	<field name="VisitTime" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VisitTime"/>
+		<property name="com.jaspersoft.studio.field.label" value="VisitTime"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dateofvisit"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="101" splitType="Stretch">
+			<image>
+				<reportElement x="246" y="0" width="80" height="80" uuid="b80b8550-290b-4b16-b594-13c3d1a6dbf0"/>
+				<imageExpression><![CDATA["C:/Users/justi/Desktop/Programming/Java/VisitorManagementSystem/src/assets/SJCF_LOGO.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="326" y="0" width="150" height="50" forecolor="#819F1D" uuid="c7e47267-2667-492b-803c-8d4ccc0537c5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI Black" size="34"/>
+				</textElement>
+				<text><![CDATA[St. Jude]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="326" y="30" width="150" height="50" forecolor="#819F1D" uuid="f01ddfe9-5062-4387-8b9c-708f2abd2d3d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI Light" size="30"/>
+				</textElement>
+				<text><![CDATA[Care Facility]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-30" y="100" width="860" height="1" forecolor="#819F1D" uuid="3269b575-3ace-4d48-860d-0c8efa81d7af"/>
+				<graphicElement>
+					<pen lineWidth="10.0"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="204" y="10" width="395" height="39" forecolor="#819F1D" uuid="caa14f30-236e-49ab-90c3-9cab00f5928c"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="Verdana Pro Black" size="28"/>
+				</textElement>
+				<text><![CDATA[VISITOR REPORT]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="-10" y="11" width="50" height="19" forecolor="#819F1D" uuid="af48e6c7-0545-467c-9eb8-453db17f2a33"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="9"/>
+				</textElement>
+				<text><![CDATA[Visitor ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="11" width="50" height="19" forecolor="#819F1D" uuid="a57c16d8-6a8a-42ed-9c8a-41749de8c191"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="9"/>
+				</textElement>
+				<text><![CDATA[First Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="11" width="60" height="19" forecolor="#819F1D" uuid="e46a71f0-869b-4175-aae9-5535d755ed18"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="9"/>
+				</textElement>
+				<text><![CDATA[Middle Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="11" width="50" height="19" forecolor="#819F1D" uuid="614e035e-d451-4461-90e1-96d6533bf52e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="9"/>
+				</textElement>
+				<text><![CDATA[Last Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="11" width="56" height="19" forecolor="#819F1D" uuid="d2007bda-3193-4f59-9b08-d4e7dd840af0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="9"/>
+				</textElement>
+				<text><![CDATA[Suffix Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="256" y="11" width="40" height="19" forecolor="#819F1D" uuid="78d69356-4469-4322-9026-c38f1da8c64d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="9"/>
+				</textElement>
+				<text><![CDATA[Gender]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="296" y="11" width="44" height="19" forecolor="#819F1D" uuid="ae411f8d-f8f6-4561-9583-d42c6baf0ce7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="9"/>
+				</textElement>
+				<text><![CDATA[Birth Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="11" width="50" height="19" forecolor="#819F1D" uuid="7f2f166b-ac28-4d17-ba6d-5084430b1c2d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="9"/>
+				</textElement>
+				<text><![CDATA[Relationship]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="11" width="70" height="19" forecolor="#819F1D" uuid="e6f47d02-faca-4256-830f-dbe6b7f84900"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="9"/>
+				</textElement>
+				<text><![CDATA[Contact Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="11" width="60" height="19" forecolor="#819F1D" uuid="bcde0da2-fb71-42fa-8a0f-23f5991cc58a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="9"/>
+				</textElement>
+				<text><![CDATA[Email Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="520" y="11" width="40" height="19" forecolor="#819F1D" uuid="afd81e48-933d-440d-a1eb-37697717a683"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="9"/>
+				</textElement>
+				<text><![CDATA[Street]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="560" y="11" width="50" height="19" forecolor="#819F1D" uuid="fa37c95a-7a3f-4f9d-8890-de224a89dc19"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="9"/>
+				</textElement>
+				<text><![CDATA[Barangay]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="610" y="11" width="30" height="19" forecolor="#819F1D" uuid="d8f4ecfa-6300-4c9f-bfaf-f5ff06322f0d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="9"/>
+				</textElement>
+				<text><![CDATA[City]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="640" y="11" width="40" height="19" forecolor="#819F1D" uuid="af4d46c7-eb8c-4940-bf29-eba08f940283"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="9"/>
+				</textElement>
+				<text><![CDATA[Province]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="680" y="11" width="50" height="19" forecolor="#819F1D" uuid="adec1713-9246-4002-8056-5d2414a88a6e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="9"/>
+				</textElement>
+				<text><![CDATA[Elderly ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="730" y="11" width="50" height="19" forecolor="#819F1D" uuid="ba3a0379-73d9-4f48-8e11-0431dd5770ef"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="9"/>
+				</textElement>
+				<text><![CDATA[Visit Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="780" y="11" width="40" height="19" forecolor="#819F1D" uuid="f0b8f652-2f0c-4cae-9663-8a151f4736d3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="9"/>
+				</textElement>
+				<text><![CDATA[Visit Time]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-30" y="29" width="860" height="1" forecolor="#819F1D" uuid="7d681f53-94fd-4890-948f-c5468c2209cc"/>
+				<graphicElement>
+					<pen lineWidth="3.0"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="-10" y="6" width="50" height="20" forecolor="#819F1D" uuid="df4f2399-63d0-4c70-b766-a8521e44b5dd"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VisitorID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="40" y="6" width="50" height="20" forecolor="#819F1D" uuid="12e639a8-0ae0-444a-aba1-977174120607"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FirstName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="6" width="60" height="20" forecolor="#819F1D" uuid="6807f423-fd0f-4f61-9708-ec5db1833c08"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MiddleName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="6" width="50" height="20" forecolor="#819F1D" uuid="35ca561f-0a72-43ab-9e88-e1e594f5aaca"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LastName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="6" width="56" height="20" forecolor="#819F1D" uuid="258b8e83-4cbb-4c8c-828a-845bb0c68629"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SuffixName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="256" y="6" width="40" height="20" forecolor="#819F1D" uuid="519b657d-5380-43d5-ae8b-7f6944e35b68"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Gender}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="6" width="44" height="20" forecolor="#819F1D" uuid="2f76234b-a0cb-4031-850f-5f4a5d112642"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BirthDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="6" width="50" height="20" forecolor="#819F1D" uuid="d5e02735-b59d-4a26-97d0-55bab51cb0aa"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Relationship}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="6" width="70" height="20" forecolor="#819F1D" uuid="3b72fd66-7a33-4680-a5bc-d40950fc1984"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ContactNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="6" width="60" height="20" forecolor="#819F1D" uuid="3449e1b1-9dee-48bd-bc7a-e1ffb5c88284"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="520" y="6" width="40" height="20" forecolor="#819F1D" uuid="98966aa9-fe59-49a5-9d71-e9bf27ae02b6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Street}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="560" y="6" width="50" height="20" forecolor="#819F1D" uuid="5f149e04-162d-4072-8961-a1936c6d0239"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Barangay}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="610" y="6" width="30" height="20" forecolor="#819F1D" uuid="10dc504c-31cd-4a54-907f-21ded21e5fe4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CityMunicipality}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="640" y="6" width="40" height="20" forecolor="#819F1D" uuid="ff85d262-e268-48eb-87e7-f64a57a4087f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Province}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="690" y="6" width="30" height="20" forecolor="#819F1D" uuid="6da66be6-26d8-4777-8d4b-b4f83868fcd4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ElderlyID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="730" y="6" width="50" height="20" forecolor="#819F1D" uuid="0cc8f9a1-f13b-4992-925d-354eb68f222c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VisitDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="780" y="6" width="40" height="20" forecolor="#819F1D" uuid="4a4073d3-0e98-43bf-be12-e8e387386627"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VisitTime}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -16,6 +16,8 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    ImageIcon logo = new ImageIcon("C:\\Users\\justi\\Desktop\\Programming\\Java\\VisitorManagementSystem\\src\\assets\\SJCF_LOGO.png");
+    
     public Login() {
         initComponents();
         setBackground(new Color(0,0,0,0));
@@ -50,6 +52,7 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("St. Jude Care Facility");
+        setIconImage(logo.getImage());
         setName("loginFrame"); // NOI18N
         setUndecorated(true);
         setResizable(false);
@@ -234,8 +237,6 @@ public class Login extends javax.swing.JFrame {
             else{
                 IncorrectDialog incorDiag = new IncorrectDialog();
                 incorDiag.setVisible(true);
-                loginTextField.setText("");
-                passwordField.setText("");
             }
             con.close();
         }
@@ -249,14 +250,14 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_loginTextFieldMouseClicked
 
     private void loginTextFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginTextFieldMousePressed
-        if(loginTextField.getText().equals("Email")){
+        if(loginTextField.getText().equals("Enter your email address")){
             loginTextField.setText("");
             loginTextField.setFocusable(true);
         }
     }//GEN-LAST:event_loginTextFieldMousePressed
 
     private void passwordFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordFieldMousePressed
-        if(passwordField.getText().equals("Password")){
+        if(passwordField.getText().equals("Enter your password")){
             passwordField.setText("");
             passwordField.setFocusable(true);
         }

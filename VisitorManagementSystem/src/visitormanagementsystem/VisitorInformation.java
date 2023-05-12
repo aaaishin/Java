@@ -6,7 +6,13 @@ package visitormanagementsystem;
 
 import java.awt.*;
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,20 +23,27 @@ public class VisitorInformation extends javax.swing.JFrame {
     /**
      * Creates new form Dashboard
      */
+    
+    ImageIcon logo = new ImageIcon("C:\\Users\\justi\\Desktop\\Programming\\Java\\VisitorManagementSystem\\src\\assets\\SJCF_LOGO.png");
+    
     public VisitorInformation() {
         initComponents();
         setBackground(new Color(0,0,0,0));
         visitorLastTextField.setFocusable(false);
         visitorFirstTextField.setFocusable(false);
         visitorMiddleTextField.setFocusable(false);
+        visitorSuffix.setFocusable(false);
         visitorGender.setFocusable(false);
         visitorContact.setFocusable(false);
         visitorEmail.setFocusable(false);
-        visitorStreet.setFocusable(false);
+        visitorRelationship.setFocusable(false);
         visitorBrgy.setFocusable(false);
         visitorCity.setFocusable(false);
-        visitorRegion.setFocusable(false);
-        
+        visitorProvince.setFocusable(false);
+        visitorRelationship.setFocusable(false);
+        visitorVisitTime.setFocusable(false);
+        visitorID.setFocusable(false);
+        elderlyID.setFocusable(false);
     }
 
     /**
@@ -58,35 +71,51 @@ public class VisitorInformation extends javax.swing.JFrame {
         elderlyLogo = new javax.swing.JLabel();
         dashboardText = new javax.swing.JLabel();
         dashboardLogo = new javax.swing.JLabel();
+        attendantLogo = new javax.swing.JLabel();
+        attendantText = new javax.swing.JLabel();
         visitorInformationText = new javax.swing.JLabel();
         personalInfoBG = new javax.swing.JPanel();
-        visitorBirthdateText = new javax.swing.JLabel();
         visitorLastTextField = new javax.swing.JTextField();
         visitorFirstTextField = new javax.swing.JTextField();
         visitorMiddleTextField = new javax.swing.JTextField();
         personalInfoText = new javax.swing.JLabel();
-        visitorEmailText = new javax.swing.JLabel();
         visitorFirstText = new javax.swing.JLabel();
         visitorMiddleText = new javax.swing.JLabel();
-        visitorVisitDate = new com.toedter.calendar.JDateChooser();
-        visitorGender = new javax.swing.JTextField();
         visitorLastName = new javax.swing.JLabel();
-        visitorContact = new javax.swing.JTextField();
-        visitorRegionText = new javax.swing.JLabel();
-        visitorEmail = new javax.swing.JTextField();
-        visitorContactNoText = new javax.swing.JLabel();
-        visitorGenderText = new javax.swing.JLabel();
-        visitorStreet = new javax.swing.JTextField();
+        visitorProvinceText = new javax.swing.JLabel();
         visitorBrgy = new javax.swing.JTextField();
         visitorStreetText = new javax.swing.JLabel();
         visitorCity = new javax.swing.JTextField();
         visitorBrgyText = new javax.swing.JLabel();
-        visitorRegion = new javax.swing.JTextField();
+        visitorProvince = new javax.swing.JTextField();
         visitorCityText = new javax.swing.JLabel();
         visitorAddressText = new javax.swing.JLabel();
+        visitorSuffix = new javax.swing.JTextField();
+        visitorSuffixText = new javax.swing.JLabel();
+        visitorGenderText = new javax.swing.JLabel();
+        visitorGender = new javax.swing.JTextField();
+        visitorBirthdateText = new javax.swing.JLabel();
         visitorBirthdate = new com.toedter.calendar.JDateChooser();
-        visitorAdmitDateText = new javax.swing.JLabel();
+        visitorContactNoText = new javax.swing.JLabel();
+        visitorContact = new javax.swing.JTextField();
+        visitorEmailText = new javax.swing.JLabel();
+        visitorEmail = new javax.swing.JTextField();
+        visitorStreet = new javax.swing.JTextField();
         addVisitorButton = new javax.swing.JButton();
+        visitorRelationshipText = new javax.swing.JLabel();
+        visitorRelationship = new javax.swing.JTextField();
+        personalVisitInfoBG = new javax.swing.JPanel();
+        visitorVisitDate = new com.toedter.calendar.JDateChooser();
+        elderlyID = new javax.swing.JTextField();
+        visitorID = new javax.swing.JTextField();
+        visitorVisitTime = new javax.swing.JTextField();
+        addDateButton = new javax.swing.JButton();
+        visitorAdmitTimeText = new javax.swing.JLabel();
+        elderlyIDText = new javax.swing.JLabel();
+        visitorIDText = new javax.swing.JLabel();
+        visitorAdmitDateText = new javax.swing.JLabel();
+        backButton = new javax.swing.JButton();
+        dateInfoText = new javax.swing.JLabel();
         visitorBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -94,6 +123,11 @@ public class VisitorInformation extends javax.swing.JFrame {
         setName("dashboardFrame"); // NOI18N
         setUndecorated(true);
         setResizable(false);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         dashboardNavBG.setBackground(new java.awt.Color(129, 159, 29));
@@ -108,7 +142,13 @@ public class VisitorInformation extends javax.swing.JFrame {
         adminSettings.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         adminSettings.setForeground(new java.awt.Color(255, 255, 255));
         adminSettings.setText("ADMINISTRATOR");
+        adminSettings.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         adminSettings.setFocusable(false);
+        adminSettings.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminSettingsMouseClicked(evt);
+            }
+        });
         dashboardNavBG.add(adminSettings, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, -1, 60));
 
         careFacilitytxt.setFont(new java.awt.Font("Segoe UI Light", 1, 36)); // NOI18N
@@ -118,6 +158,12 @@ public class VisitorInformation extends javax.swing.JFrame {
         dashboardNavBG.add(careFacilitytxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, -1, 60));
 
         adminLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/adminLogo.png"))); // NOI18N
+        adminLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        adminLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminLogoMouseClicked(evt);
+            }
+        });
         dashboardNavBG.add(adminLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, -1, -1));
 
         minimizeWhiteLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/minimizeWhiteLogo.png"))); // NOI18N
@@ -151,11 +197,21 @@ public class VisitorInformation extends javax.swing.JFrame {
         reportText.setForeground(new java.awt.Color(255, 255, 255));
         reportText.setText("REPORT");
         reportText.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        dashboardSideBarBG.add(reportText, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, -1));
+        reportText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reportTextMouseClicked(evt);
+            }
+        });
+        dashboardSideBarBG.add(reportText, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, -1, -1));
 
         reportLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/reportLogo.png"))); // NOI18N
         reportLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        dashboardSideBarBG.add(reportLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
+        reportLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reportLogoMouseClicked(evt);
+            }
+        });
+        dashboardSideBarBG.add(reportLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, -1, -1));
 
         visitorText.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         visitorText.setForeground(new java.awt.Color(255, 255, 255));
@@ -229,23 +285,37 @@ public class VisitorInformation extends javax.swing.JFrame {
         });
         dashboardSideBarBG.add(dashboardLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
-        getContentPane().add(dashboardSideBarBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 160, 510));
+        attendantLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/attendantLogo.png"))); // NOI18N
+        attendantLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        attendantLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                attendantLogoMouseClicked(evt);
+            }
+        });
+        dashboardSideBarBG.add(attendantLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
 
-        visitorInformationText.setFont(new java.awt.Font("Verdana Pro Black", 1, 28)); // NOI18N
+        attendantText.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        attendantText.setForeground(new java.awt.Color(255, 255, 255));
+        attendantText.setText("ATTENDANT");
+        attendantText.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        attendantText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                attendantTextMouseClicked(evt);
+            }
+        });
+        dashboardSideBarBG.add(attendantText, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
+
+        getContentPane().add(dashboardSideBarBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 160, 560));
+
+        visitorInformationText.setFont(new java.awt.Font("Verdana Pro Black", 1, 24)); // NOI18N
         visitorInformationText.setForeground(new java.awt.Color(129, 159, 29));
         visitorInformationText.setText("VISITOR INFORMATION");
         visitorInformationText.setFocusable(false);
-        getContentPane().add(visitorInformationText, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 420, 30));
+        getContentPane().add(visitorInformationText, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 360, 30));
 
         personalInfoBG.setBackground(new java.awt.Color(255, 255, 255));
         personalInfoBG.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(129, 159, 29), 5, true));
         personalInfoBG.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        visitorBirthdateText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        visitorBirthdateText.setForeground(new java.awt.Color(107, 132, 22));
-        visitorBirthdateText.setText("Birthdate");
-        visitorBirthdateText.setFocusable(false);
-        personalInfoBG.add(visitorBirthdateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, 80, 20));
 
         visitorLastTextField.setBackground(new java.awt.Color(231, 228, 228));
         visitorLastTextField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -254,9 +324,6 @@ public class VisitorInformation extends javax.swing.JFrame {
         visitorLastTextField.setToolTipText("Last Name");
         visitorLastTextField.setBorder(null);
         visitorLastTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                visitorLastTextFieldMouseClicked(evt);
-            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 visitorLastTextFieldMousePressed(evt);
             }
@@ -266,7 +333,7 @@ public class VisitorInformation extends javax.swing.JFrame {
                 visitorLastTextFieldActionPerformed(evt);
             }
         });
-        personalInfoBG.add(visitorLastTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 180, 40));
+        personalInfoBG.add(visitorLastTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 180, 40));
 
         visitorFirstTextField.setBackground(new java.awt.Color(231, 228, 228));
         visitorFirstTextField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -286,7 +353,7 @@ public class VisitorInformation extends javax.swing.JFrame {
                 visitorFirstTextFieldActionPerformed(evt);
             }
         });
-        personalInfoBG.add(visitorFirstTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 180, 40));
+        personalInfoBG.add(visitorFirstTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 180, 40));
 
         visitorMiddleTextField.setBackground(new java.awt.Color(231, 228, 228));
         visitorMiddleTextField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -306,7 +373,7 @@ public class VisitorInformation extends javax.swing.JFrame {
                 visitorMiddleTextFieldActionPerformed(evt);
             }
         });
-        personalInfoBG.add(visitorMiddleTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 190, 40));
+        personalInfoBG.add(visitorMiddleTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 190, 40));
 
         personalInfoText.setFont(new java.awt.Font("Verdana Pro Black", 1, 18)); // NOI18N
         personalInfoText.setForeground(new java.awt.Color(183, 216, 72));
@@ -314,131 +381,29 @@ public class VisitorInformation extends javax.swing.JFrame {
         personalInfoText.setFocusable(false);
         personalInfoBG.add(personalInfoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, 20));
 
-        visitorEmailText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        visitorEmailText.setForeground(new java.awt.Color(107, 132, 22));
-        visitorEmailText.setText("Email Address*");
-        visitorEmailText.setFocusable(false);
-        personalInfoBG.add(visitorEmailText, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 110, 20));
-
         visitorFirstText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         visitorFirstText.setForeground(new java.awt.Color(107, 132, 22));
         visitorFirstText.setText("First Name*");
         visitorFirstText.setFocusable(false);
-        personalInfoBG.add(visitorFirstText, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 80, 20));
+        personalInfoBG.add(visitorFirstText, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 80, 20));
 
         visitorMiddleText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         visitorMiddleText.setForeground(new java.awt.Color(107, 132, 22));
         visitorMiddleText.setText("Middle Name");
         visitorMiddleText.setFocusable(false);
-        personalInfoBG.add(visitorMiddleText, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 80, 20));
-
-        visitorVisitDate.setBackground(new java.awt.Color(231, 228, 228));
-        visitorVisitDate.setForeground(new java.awt.Color(107, 132, 22));
-        personalInfoBG.add(visitorVisitDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 290, 40));
-
-        visitorGender.setBackground(new java.awt.Color(231, 228, 228));
-        visitorGender.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        visitorGender.setForeground(new java.awt.Color(107, 132, 22));
-        visitorGender.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        visitorGender.setBorder(null);
-        visitorGender.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                visitorGenderMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                visitorGenderMousePressed(evt);
-            }
-        });
-        visitorGender.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                visitorGenderActionPerformed(evt);
-            }
-        });
-        personalInfoBG.add(visitorGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 150, 40));
+        personalInfoBG.add(visitorMiddleText, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 80, 20));
 
         visitorLastName.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         visitorLastName.setForeground(new java.awt.Color(107, 132, 22));
         visitorLastName.setText("Last Name*");
         visitorLastName.setFocusable(false);
-        personalInfoBG.add(visitorLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 80, 20));
+        personalInfoBG.add(visitorLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 80, 20));
 
-        visitorContact.setBackground(new java.awt.Color(231, 228, 228));
-        visitorContact.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        visitorContact.setForeground(new java.awt.Color(107, 132, 22));
-        visitorContact.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        visitorContact.setBorder(null);
-        visitorContact.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                visitorContactMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                visitorContactMousePressed(evt);
-            }
-        });
-        visitorContact.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                visitorContactActionPerformed(evt);
-            }
-        });
-        personalInfoBG.add(visitorContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 240, 40));
-
-        visitorRegionText.setFont(new java.awt.Font("Verdana", 2, 12)); // NOI18N
-        visitorRegionText.setForeground(new java.awt.Color(107, 132, 22));
-        visitorRegionText.setText("Region*");
-        visitorRegionText.setFocusable(false);
-        personalInfoBG.add(visitorRegionText, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 250, 110, 20));
-
-        visitorEmail.setBackground(new java.awt.Color(231, 228, 228));
-        visitorEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        visitorEmail.setForeground(new java.awt.Color(107, 132, 22));
-        visitorEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        visitorEmail.setBorder(null);
-        visitorEmail.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                visitorEmailMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                visitorEmailMousePressed(evt);
-            }
-        });
-        visitorEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                visitorEmailActionPerformed(evt);
-            }
-        });
-        personalInfoBG.add(visitorEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 370, 40));
-
-        visitorContactNoText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        visitorContactNoText.setForeground(new java.awt.Color(107, 132, 22));
-        visitorContactNoText.setText("Contact Number*");
-        visitorContactNoText.setFocusable(false);
-        personalInfoBG.add(visitorContactNoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 110, 20));
-
-        visitorGenderText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        visitorGenderText.setForeground(new java.awt.Color(107, 132, 22));
-        visitorGenderText.setText("Gender*");
-        visitorGenderText.setFocusable(false);
-        personalInfoBG.add(visitorGenderText, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 80, 20));
-
-        visitorStreet.setBackground(new java.awt.Color(231, 228, 228));
-        visitorStreet.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        visitorStreet.setForeground(new java.awt.Color(107, 132, 22));
-        visitorStreet.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        visitorStreet.setBorder(null);
-        visitorStreet.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                visitorStreetMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                visitorStreetMousePressed(evt);
-            }
-        });
-        visitorStreet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                visitorStreetActionPerformed(evt);
-            }
-        });
-        personalInfoBG.add(visitorStreet, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 180, 30));
+        visitorProvinceText.setFont(new java.awt.Font("Verdana", 2, 12)); // NOI18N
+        visitorProvinceText.setForeground(new java.awt.Color(107, 132, 22));
+        visitorProvinceText.setText("Province*");
+        visitorProvinceText.setFocusable(false);
+        personalInfoBG.add(visitorProvinceText, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 230, 110, 20));
 
         visitorBrgy.setBackground(new java.awt.Color(231, 228, 228));
         visitorBrgy.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -458,13 +423,13 @@ public class VisitorInformation extends javax.swing.JFrame {
                 visitorBrgyActionPerformed(evt);
             }
         });
-        personalInfoBG.add(visitorBrgy, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 230, 30));
+        personalInfoBG.add(visitorBrgy, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 230, 30));
 
         visitorStreetText.setFont(new java.awt.Font("Verdana", 2, 12)); // NOI18N
         visitorStreetText.setForeground(new java.awt.Color(107, 132, 22));
         visitorStreetText.setText("Street*");
         visitorStreetText.setFocusable(false);
-        personalInfoBG.add(visitorStreetText, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 110, 20));
+        personalInfoBG.add(visitorStreetText, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 110, 20));
 
         visitorCity.setBackground(new java.awt.Color(231, 228, 228));
         visitorCity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -484,55 +449,185 @@ public class VisitorInformation extends javax.swing.JFrame {
                 visitorCityActionPerformed(evt);
             }
         });
-        personalInfoBG.add(visitorCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 210, 30));
+        personalInfoBG.add(visitorCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 210, 30));
 
         visitorBrgyText.setFont(new java.awt.Font("Verdana", 2, 12)); // NOI18N
         visitorBrgyText.setForeground(new java.awt.Color(107, 132, 22));
         visitorBrgyText.setText("Barangay*");
         visitorBrgyText.setFocusable(false);
-        personalInfoBG.add(visitorBrgyText, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 110, 20));
+        personalInfoBG.add(visitorBrgyText, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 110, 20));
 
-        visitorRegion.setBackground(new java.awt.Color(231, 228, 228));
-        visitorRegion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        visitorRegion.setForeground(new java.awt.Color(107, 132, 22));
-        visitorRegion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        visitorRegion.setBorder(null);
-        visitorRegion.addMouseListener(new java.awt.event.MouseAdapter() {
+        visitorProvince.setBackground(new java.awt.Color(231, 228, 228));
+        visitorProvince.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        visitorProvince.setForeground(new java.awt.Color(107, 132, 22));
+        visitorProvince.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorProvince.setBorder(null);
+        visitorProvince.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                visitorRegionMouseClicked(evt);
+                visitorProvinceMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                visitorRegionMousePressed(evt);
+                visitorProvinceMousePressed(evt);
             }
         });
-        visitorRegion.addActionListener(new java.awt.event.ActionListener() {
+        visitorProvince.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                visitorRegionActionPerformed(evt);
+                visitorProvinceActionPerformed(evt);
             }
         });
-        personalInfoBG.add(visitorRegion, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 220, 130, 30));
+        personalInfoBG.add(visitorProvince, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, 130, 30));
 
         visitorCityText.setFont(new java.awt.Font("Verdana", 2, 12)); // NOI18N
         visitorCityText.setForeground(new java.awt.Color(107, 132, 22));
         visitorCityText.setText("City/Municipality*");
         visitorCityText.setFocusable(false);
-        personalInfoBG.add(visitorCityText, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 110, 20));
+        personalInfoBG.add(visitorCityText, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, 110, 20));
 
         visitorAddressText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         visitorAddressText.setForeground(new java.awt.Color(107, 132, 22));
-        visitorAddressText.setText("Elderly's Address");
+        visitorAddressText.setText("Visitor's Address");
         visitorAddressText.setFocusable(false);
-        personalInfoBG.add(visitorAddressText, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 110, 20));
+        personalInfoBG.add(visitorAddressText, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 110, 20));
+
+        visitorSuffix.setBackground(new java.awt.Color(231, 228, 228));
+        visitorSuffix.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        visitorSuffix.setForeground(new java.awt.Color(107, 132, 22));
+        visitorSuffix.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorSuffix.setBorder(null);
+        visitorSuffix.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                visitorSuffixMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                visitorSuffixMousePressed(evt);
+            }
+        });
+        visitorSuffix.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visitorSuffixActionPerformed(evt);
+            }
+        });
+        personalInfoBG.add(visitorSuffix, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, 80, 40));
+
+        visitorSuffixText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        visitorSuffixText.setForeground(new java.awt.Color(107, 132, 22));
+        visitorSuffixText.setText("Suffix Name");
+        visitorSuffixText.setFocusable(false);
+        personalInfoBG.add(visitorSuffixText, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 80, 20));
+
+        visitorGenderText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        visitorGenderText.setForeground(new java.awt.Color(107, 132, 22));
+        visitorGenderText.setText("Gender*");
+        visitorGenderText.setFocusable(false);
+        personalInfoBG.add(visitorGenderText, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 40, 80, 20));
+
+        visitorGender.setBackground(new java.awt.Color(231, 228, 228));
+        visitorGender.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        visitorGender.setForeground(new java.awt.Color(107, 132, 22));
+        visitorGender.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorGender.setBorder(null);
+        visitorGender.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                visitorGenderMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                visitorGenderMousePressed(evt);
+            }
+        });
+        visitorGender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visitorGenderActionPerformed(evt);
+            }
+        });
+        personalInfoBG.add(visitorGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 110, 40));
+
+        visitorBirthdateText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        visitorBirthdateText.setForeground(new java.awt.Color(107, 132, 22));
+        visitorBirthdateText.setText("Birthdate*");
+        visitorBirthdateText.setFocusable(false);
+        personalInfoBG.add(visitorBirthdateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 80, 20));
 
         visitorBirthdate.setBackground(new java.awt.Color(231, 228, 228));
         visitorBirthdate.setForeground(new java.awt.Color(107, 132, 22));
-        personalInfoBG.add(visitorBirthdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, 200, 40));
+        visitorBirthdate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        personalInfoBG.add(visitorBirthdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 240, 40));
 
-        visitorAdmitDateText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        visitorAdmitDateText.setForeground(new java.awt.Color(107, 132, 22));
-        visitorAdmitDateText.setText("Visit Date*");
-        visitorAdmitDateText.setFocusable(false);
-        personalInfoBG.add(visitorAdmitDateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 110, 20));
+        visitorContactNoText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        visitorContactNoText.setForeground(new java.awt.Color(107, 132, 22));
+        visitorContactNoText.setText("Contact Number*");
+        visitorContactNoText.setFocusable(false);
+        personalInfoBG.add(visitorContactNoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 110, 20));
+
+        visitorContact.setBackground(new java.awt.Color(231, 228, 228));
+        visitorContact.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        visitorContact.setForeground(new java.awt.Color(107, 132, 22));
+        visitorContact.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorContact.setBorder(null);
+        visitorContact.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                visitorContactMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                visitorContactMousePressed(evt);
+            }
+        });
+        visitorContact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visitorContactActionPerformed(evt);
+            }
+        });
+        visitorContact.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                visitorContactKeyTyped(evt);
+            }
+        });
+        personalInfoBG.add(visitorContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 240, 40));
+
+        visitorEmailText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        visitorEmailText.setForeground(new java.awt.Color(107, 132, 22));
+        visitorEmailText.setText("Email Address*");
+        visitorEmailText.setFocusable(false);
+        personalInfoBG.add(visitorEmailText, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 110, 20));
+
+        visitorEmail.setBackground(new java.awt.Color(231, 228, 228));
+        visitorEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        visitorEmail.setForeground(new java.awt.Color(107, 132, 22));
+        visitorEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorEmail.setBorder(null);
+        visitorEmail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                visitorEmailMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                visitorEmailMousePressed(evt);
+            }
+        });
+        visitorEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visitorEmailActionPerformed(evt);
+            }
+        });
+        personalInfoBG.add(visitorEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, 280, 40));
+
+        visitorStreet.setBackground(new java.awt.Color(231, 228, 228));
+        visitorStreet.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        visitorStreet.setForeground(new java.awt.Color(107, 132, 22));
+        visitorStreet.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorStreet.setBorder(null);
+        visitorStreet.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                visitorStreetMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                visitorStreetMousePressed(evt);
+            }
+        });
+        visitorStreet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visitorStreetActionPerformed(evt);
+            }
+        });
+        personalInfoBG.add(visitorStreet, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 180, 30));
 
         addVisitorButton.setBackground(new java.awt.Color(176, 212, 55));
         addVisitorButton.setFont(new java.awt.Font("Verdana Pro Black", 1, 18)); // NOI18N
@@ -544,14 +639,181 @@ public class VisitorInformation extends javax.swing.JFrame {
                 addVisitorButtonActionPerformed(evt);
             }
         });
-        personalInfoBG.add(addVisitorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, 220, 40));
+        personalInfoBG.add(addVisitorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 210, 40));
 
-        getContentPane().add(personalInfoBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 840, 450));
+        visitorRelationshipText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        visitorRelationshipText.setForeground(new java.awt.Color(107, 132, 22));
+        visitorRelationshipText.setText("Relationship to Elderly*");
+        visitorRelationshipText.setFocusable(false);
+        personalInfoBG.add(visitorRelationshipText, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 140, 20));
+
+        visitorRelationship.setBackground(new java.awt.Color(231, 228, 228));
+        visitorRelationship.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        visitorRelationship.setForeground(new java.awt.Color(107, 132, 22));
+        visitorRelationship.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorRelationship.setBorder(null);
+        visitorRelationship.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                visitorRelationshipMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                visitorRelationshipMousePressed(evt);
+            }
+        });
+        visitorRelationship.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visitorRelationshipActionPerformed(evt);
+            }
+        });
+        personalInfoBG.add(visitorRelationship, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 390, 40));
+
+        getContentPane().add(personalInfoBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 840, 340));
+
+        personalVisitInfoBG.setBackground(new java.awt.Color(255, 255, 255));
+        personalVisitInfoBG.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(129, 159, 29), 5, true));
+        personalVisitInfoBG.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        visitorVisitDate.setBackground(new java.awt.Color(231, 228, 228));
+        visitorVisitDate.setForeground(new java.awt.Color(107, 132, 22));
+        visitorVisitDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        visitorVisitDate.setName("visitorVisitDate"); // NOI18N
+        visitorVisitDate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                visitorVisitDateMousePressed(evt);
+            }
+        });
+        personalVisitInfoBG.add(visitorVisitDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 210, 40));
+
+        elderlyID.setBackground(new java.awt.Color(231, 228, 228));
+        elderlyID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        elderlyID.setForeground(new java.awt.Color(107, 132, 22));
+        elderlyID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        elderlyID.setBorder(null);
+        elderlyID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                elderlyIDMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                elderlyIDMousePressed(evt);
+            }
+        });
+        elderlyID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elderlyIDActionPerformed(evt);
+            }
+        });
+        elderlyID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                elderlyIDKeyTyped(evt);
+            }
+        });
+        personalVisitInfoBG.add(elderlyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 160, 40));
+
+        visitorID.setBackground(new java.awt.Color(231, 228, 228));
+        visitorID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        visitorID.setForeground(new java.awt.Color(107, 132, 22));
+        visitorID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorID.setBorder(null);
+        visitorID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                visitorIDMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                visitorIDMousePressed(evt);
+            }
+        });
+        visitorID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visitorIDActionPerformed(evt);
+            }
+        });
+        visitorID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                visitorIDKeyTyped(evt);
+            }
+        });
+        personalVisitInfoBG.add(visitorID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 160, 40));
+
+        visitorVisitTime.setBackground(new java.awt.Color(231, 228, 228));
+        visitorVisitTime.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        visitorVisitTime.setForeground(new java.awt.Color(107, 132, 22));
+        visitorVisitTime.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorVisitTime.setBorder(null);
+        visitorVisitTime.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                visitorVisitTimeMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                visitorVisitTimeMousePressed(evt);
+            }
+        });
+        visitorVisitTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visitorVisitTimeActionPerformed(evt);
+            }
+        });
+        personalVisitInfoBG.add(visitorVisitTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, 210, 40));
+
+        addDateButton.setBackground(new java.awt.Color(176, 212, 55));
+        addDateButton.setFont(new java.awt.Font("Verdana Pro Black", 1, 18)); // NOI18N
+        addDateButton.setForeground(new java.awt.Color(255, 255, 255));
+        addDateButton.setText("ADD DATE");
+        addDateButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addDateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addDateButtonActionPerformed(evt);
+            }
+        });
+        personalVisitInfoBG.add(addDateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 210, 40));
+
+        visitorAdmitTimeText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        visitorAdmitTimeText.setForeground(new java.awt.Color(107, 132, 22));
+        visitorAdmitTimeText.setText("Visit Time*");
+        visitorAdmitTimeText.setFocusable(false);
+        personalVisitInfoBG.add(visitorAdmitTimeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, 110, 20));
+
+        elderlyIDText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        elderlyIDText.setForeground(new java.awt.Color(107, 132, 22));
+        elderlyIDText.setText("Assign to ElderlyID*");
+        elderlyIDText.setFocusable(false);
+        personalVisitInfoBG.add(elderlyIDText, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 130, 20));
+
+        visitorIDText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        visitorIDText.setForeground(new java.awt.Color(107, 132, 22));
+        visitorIDText.setText("Assign to VisitorID*");
+        visitorIDText.setFocusable(false);
+        personalVisitInfoBG.add(visitorIDText, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 130, 20));
+
+        visitorAdmitDateText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        visitorAdmitDateText.setForeground(new java.awt.Color(107, 132, 22));
+        visitorAdmitDateText.setText("Visit Date*");
+        visitorAdmitDateText.setFocusable(false);
+        personalVisitInfoBG.add(visitorAdmitDateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 110, 20));
+
+        backButton.setBackground(new java.awt.Color(176, 212, 55));
+        backButton.setFont(new java.awt.Font("Verdana Pro Black", 1, 18)); // NOI18N
+        backButton.setForeground(new java.awt.Color(255, 255, 255));
+        backButton.setText("GO BACK");
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        personalVisitInfoBG.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 210, 40));
+
+        dateInfoText.setFont(new java.awt.Font("Verdana Pro Black", 1, 18)); // NOI18N
+        dateInfoText.setForeground(new java.awt.Color(183, 216, 72));
+        dateInfoText.setText("DATE OF VISIT");
+        dateInfoText.setFocusable(false);
+        personalVisitInfoBG.add(dateInfoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 170, 20));
+
+        getContentPane().add(personalVisitInfoBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 840, 170));
 
         visitorBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/dashboardBackground.png"))); // NOI18N
         visitorBackground.setText("jLabel1");
         visitorBackground.setPreferredSize(new java.awt.Dimension(1020, 570));
-        getContentPane().add(visitorBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 570));
+        getContentPane().add(visitorBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 620));
 
         pack();
         setLocationRelativeTo(null);
@@ -567,43 +829,195 @@ public class VisitorInformation extends javax.swing.JFrame {
     }//GEN-LAST:event_closeWhiteLogoMouseClicked
 
     private void elderlyLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elderlyLogoMouseClicked
-        this.setVisible(false);
-        new ElderlyDetails().setVisible(true);
+         ElderlyDetails elderlyDetails = new ElderlyDetails();
+         String database = "SELECT ElderlyID, FirstName, MiddleName, LastName, SuffixName, Gender, BirthDate, ContactNo, GuardianName, Street, Barangay, CityMunicipality, Province, AdmitDate, ElderlyRoomNo FROM elderly";
+         
+         try{
+             Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+             PreparedStatement pst = con.prepareStatement(database);
+             ResultSet rs = pst.executeQuery();
+             DefaultTableModel table = (DefaultTableModel) elderlyDetails.getElderlyTable().getModel();
+             table.setRowCount(0);
+             
+             while(rs.next()){
+                 Object[] row = {
+                     rs.getInt("ElderlyID"),
+                     rs.getString("FirstName"),
+                     rs.getString("MiddleName"),
+                     rs.getString("LastName"),
+                     rs.getString("SuffixName"),
+                     rs.getString("Gender"),
+                     rs.getObject("BirthDate"),
+                     rs.getLong("ContactNo"),
+                     rs.getString("GuardianName"),
+                     rs.getString("Street"),
+                     rs.getString("Barangay"),
+                     rs.getString("CityMunicipality"),
+                     rs.getString("Province"),
+                     rs.getObject("AdmitDate"),
+                     rs.getLong("ElderlyRoomNo")
+                 };
+                 table.addRow(row);
+             }
+             elderlyDetails.getElderlyTable().setModel(table);
+             elderlyDetails.setVisible(true);
+             this.setVisible(false);
+             rs.close();
+             pst.close();
+             con.close();
+         }
+         catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+         }
     }//GEN-LAST:event_elderlyLogoMouseClicked
 
     private void elderlyTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elderlyTextMouseClicked
-        this.setVisible(false);
-        new ElderlyDetails().setVisible(true);
+         ElderlyDetails elderlyDetails = new ElderlyDetails();
+         String database = "SELECT ElderlyID, FirstName, MiddleName, LastName, SuffixName, Gender, BirthDate, ContactNo, GuardianName, Street, Barangay, CityMunicipality, Province, AdmitDate, ElderlyRoomNo FROM elderly";
+         
+         try{
+             Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+             PreparedStatement pst = con.prepareStatement(database);
+             ResultSet rs = pst.executeQuery();
+             DefaultTableModel table = (DefaultTableModel) elderlyDetails.getElderlyTable().getModel();
+             table.setRowCount(0);
+             
+             while(rs.next()){
+                 Object[] row = {
+                     rs.getInt("ElderlyID"),
+                     rs.getString("FirstName"),
+                     rs.getString("MiddleName"),
+                     rs.getString("LastName"),
+                     rs.getString("SuffixName"),
+                     rs.getString("Gender"),
+                     rs.getObject("BirthDate"),
+                     rs.getLong("ContactNo"),
+                     rs.getString("GuardianName"),
+                     rs.getString("Street"),
+                     rs.getString("Barangay"),
+                     rs.getString("CityMunicipality"),
+                     rs.getString("Province"),
+                     rs.getObject("AdmitDate"),
+                     rs.getLong("ElderlyRoomNo")
+                 };
+                 table.addRow(row);
+             }
+             elderlyDetails.getElderlyTable().setModel(table);
+             elderlyDetails.setVisible(true);
+             this.setVisible(false);
+             rs.close();
+             pst.close();
+             con.close();
+         }
+         catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+         }
     }//GEN-LAST:event_elderlyTextMouseClicked
 
     private void dashboardLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardLogoMouseClicked
-        this.setVisible(false);
-        new Dashboard().setVisible(true);
+        Dashboard dashboard = new Dashboard();
+        try{
+            String database = "SELECT COUNT(*) AS visitorCount FROM visitor";
+            Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+            PreparedStatement pst = con.prepareStatement(database);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                int count = rs.getInt("visitorCount");
+                dashboard.visitorCounter.setText(String.valueOf(count));
+            }
+            
+            dashboard.setVisible(true);
+            this.setVisible(false);
+            rs.close();
+            pst.close();
+            con.close();
+        
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+        }
+        try{
+            String database = "SELECT COUNT(*) AS elderlyCount FROM elderly";
+            Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+            PreparedStatement pst = con.prepareStatement(database);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                int count = rs.getInt("elderlyCount");
+                dashboard.elderlyCounter.setText(String.valueOf(count));
+            }
+            
+            dashboard.setVisible(true);
+            this.setVisible(false);
+            rs.close();
+            pst.close();
+            con.close();
+        
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+        }
     }//GEN-LAST:event_dashboardLogoMouseClicked
 
     private void dashboardTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardTextMouseClicked
-        this.setVisible(false);
-        new Dashboard().setVisible(true);
+        Dashboard dashboard = new Dashboard();
+        try{
+            String database = "SELECT COUNT(*) AS visitorCount FROM visitor";
+            Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+            PreparedStatement pst = con.prepareStatement(database);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                int count = rs.getInt("visitorCount");
+                dashboard.visitorCounter.setText(String.valueOf(count));
+            }
+            
+            dashboard.setVisible(true);
+            this.setVisible(false);
+            rs.close();
+            pst.close();
+            con.close();
+        
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+        }
+        try{
+            String database = "SELECT COUNT(*) AS elderlyCount FROM elderly";
+            Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+            PreparedStatement pst = con.prepareStatement(database);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                int count = rs.getInt("elderlyCount");
+                dashboard.elderlyCounter.setText(String.valueOf(count));
+            }
+            
+            dashboard.setVisible(true);
+            this.setVisible(false);
+            rs.close();
+            pst.close();
+            con.close();
+        
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+        }
     }//GEN-LAST:event_dashboardTextMouseClicked
 
-    private void visitorLastTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorLastTextFieldMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_visitorLastTextFieldMouseClicked
-
     private void visitorLastTextFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorLastTextFieldMousePressed
-        // TODO add your handling code here:
+        if(visitorLastTextField.getText().equals("Last Name")){
+            visitorLastTextField.setText("");
+            visitorLastTextField.setFocusable(true);
+        }
     }//GEN-LAST:event_visitorLastTextFieldMousePressed
 
     private void visitorLastTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorLastTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_visitorLastTextFieldActionPerformed
 
-    private void visitorFirstTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorFirstTextFieldMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_visitorFirstTextFieldMouseClicked
-
     private void visitorFirstTextFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorFirstTextFieldMousePressed
-        // TODO add your handling code here:
+        if(visitorFirstTextField.getText().equals("First Name")){
+            visitorFirstTextField.setText("");
+            visitorFirstTextField.setFocusable(true);
+        }
     }//GEN-LAST:event_visitorFirstTextFieldMousePressed
 
     private void visitorFirstTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorFirstTextFieldActionPerformed
@@ -615,67 +1029,25 @@ public class VisitorInformation extends javax.swing.JFrame {
     }//GEN-LAST:event_visitorMiddleTextFieldMouseClicked
 
     private void visitorMiddleTextFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorMiddleTextFieldMousePressed
-        // TODO add your handling code here:
+        if(visitorMiddleTextField.getText().equals("Middle Name")){
+            visitorMiddleTextField.setText("");
+            visitorMiddleTextField.setFocusable(true);
+        }
     }//GEN-LAST:event_visitorMiddleTextFieldMousePressed
 
     private void visitorMiddleTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorMiddleTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_visitorMiddleTextFieldActionPerformed
 
-    private void visitorGenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorGenderMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_visitorGenderMouseClicked
-
-    private void visitorGenderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorGenderMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_visitorGenderMousePressed
-
-    private void visitorGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorGenderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_visitorGenderActionPerformed
-
-    private void visitorContactMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorContactMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_visitorContactMouseClicked
-
-    private void visitorContactMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorContactMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_visitorContactMousePressed
-
-    private void visitorContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorContactActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_visitorContactActionPerformed
-
-    private void visitorEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorEmailMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_visitorEmailMouseClicked
-
-    private void visitorEmailMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorEmailMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_visitorEmailMousePressed
-
-    private void visitorEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_visitorEmailActionPerformed
-
-    private void visitorStreetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorStreetMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_visitorStreetMouseClicked
-
-    private void visitorStreetMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorStreetMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_visitorStreetMousePressed
-
-    private void visitorStreetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorStreetActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_visitorStreetActionPerformed
-
     private void visitorBrgyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorBrgyMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_visitorBrgyMouseClicked
 
     private void visitorBrgyMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorBrgyMousePressed
-        // TODO add your handling code here:
+        if(visitorBrgy.getText().equals("Barangay")){
+            visitorBrgy.setText("");
+            visitorBrgy.setFocusable(true);
+        }
     }//GEN-LAST:event_visitorBrgyMousePressed
 
     private void visitorBrgyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorBrgyActionPerformed
@@ -687,37 +1059,74 @@ public class VisitorInformation extends javax.swing.JFrame {
     }//GEN-LAST:event_visitorCityMouseClicked
 
     private void visitorCityMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorCityMousePressed
-        // TODO add your handling code here:
+        if(visitorCity.getText().equals("City")){
+            visitorCity.setText("");
+            visitorCity.setFocusable(true);
+        }
     }//GEN-LAST:event_visitorCityMousePressed
 
     private void visitorCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorCityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_visitorCityActionPerformed
 
-    private void visitorRegionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorRegionMouseClicked
+    private void visitorProvinceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorProvinceMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_visitorRegionMouseClicked
+    }//GEN-LAST:event_visitorProvinceMouseClicked
 
-    private void visitorRegionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorRegionMousePressed
+    private void visitorProvinceMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorProvinceMousePressed
+        if(visitorProvince.getText().equals("Province")){
+            visitorProvince.setText("");
+            visitorProvince.setFocusable(true);
+        }
+    }//GEN-LAST:event_visitorProvinceMousePressed
+
+    private void visitorProvinceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorProvinceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_visitorRegionMousePressed
-
-    private void visitorRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorRegionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_visitorRegionActionPerformed
-
-    private void addVisitorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVisitorButtonActionPerformed
-        this.setVisible(false);
-        new VisitorDetails().setVisible(true);
-    }//GEN-LAST:event_addVisitorButtonActionPerformed
+    }//GEN-LAST:event_visitorProvinceActionPerformed
 
     private void elderlyLogoCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_elderlyLogoCaretPositionChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_elderlyLogoCaretPositionChanged
 
     private void visitorLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorLogoMouseClicked
-        this.setVisible(false);
-        new VisitorDetails().setVisible(true);
+        VisitorDetails visitorDetails = new VisitorDetails();
+        String database = "SELECT visitor.VisitorID, visitor.FirstName, visitor.MiddleName, visitor.LastName, visitor.SuffixName, visitor.Gender, visitor.BirthDate, visitor.Relationship, visitor.ContactNo, visitor.Email, visitor.Street, visitor.Barangay, visitor.CityMunicipality, visitor.Province FROM visitor";
+        try{
+            Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+            PreparedStatement pst = con.prepareStatement(database);
+            ResultSet rs = pst.executeQuery();
+            DefaultTableModel table = (DefaultTableModel) visitorDetails.getVisitorTable().getModel();
+            table.setRowCount(0);
+
+            while(rs.next()){
+                Object[] row = {
+                    rs.getInt("visitor.VisitorID"),
+                    rs.getString("visitor.FirstName"),
+                    rs.getString("visitor.MiddleName"),
+                    rs.getString("visitor.LastName"),
+                    rs.getString("visitor.SuffixName"),
+                    rs.getString("visitor.Gender"),
+                    rs.getObject("visitor.BirthDate"),
+                    rs.getString("visitor.Relationship"),
+                    rs.getLong("visitor.ContactNo"),
+                    rs.getString("visitor.Email"),
+                    rs.getString("visitor.Street"),
+                    rs.getString("visitor.Barangay"),
+                    rs.getString("visitor.CityMunicipality"),
+                    rs.getString("visitor.Province"),
+                };
+                table.addRow(row);
+            }
+            visitorDetails.getVisitorTable().setModel(table);
+            visitorDetails.setVisible(true);
+            this.setVisible(false);
+            rs.close();
+            pst.close();
+            con.close();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+        }
     }//GEN-LAST:event_visitorLogoMouseClicked
 
     private void visitorTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_visitorTextKeyPressed
@@ -725,9 +1134,590 @@ public class VisitorInformation extends javax.swing.JFrame {
     }//GEN-LAST:event_visitorTextKeyPressed
 
     private void visitorTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorTextMouseClicked
-        this.setVisible(false);
-        new VisitorDetails().setVisible(true);
+        VisitorDetails visitorDetails = new VisitorDetails();
+        String database = "SELECT visitor.VisitorID, visitor.FirstName, visitor.MiddleName, visitor.LastName, visitor.SuffixName, visitor.Gender, visitor.BirthDate, visitor.Relationship, visitor.ContactNo, visitor.Email, visitor.Street, visitor.Barangay, visitor.CityMunicipality, visitor.Province FROM visitor";
+        try{
+            Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+            PreparedStatement pst = con.prepareStatement(database);
+            ResultSet rs = pst.executeQuery();
+            DefaultTableModel table = (DefaultTableModel) visitorDetails.getVisitorTable().getModel();
+            table.setRowCount(0);
+
+            while(rs.next()){
+                Object[] row = {
+                    rs.getInt("visitor.VisitorID"),
+                    rs.getString("visitor.FirstName"),
+                    rs.getString("visitor.MiddleName"),
+                    rs.getString("visitor.LastName"),
+                    rs.getString("visitor.SuffixName"),
+                    rs.getString("visitor.Gender"),
+                    rs.getObject("visitor.BirthDate"),
+                    rs.getString("visitor.Relationship"),
+                    rs.getLong("visitor.ContactNo"),
+                    rs.getString("visitor.Email"),
+                    rs.getString("visitor.Street"),
+                    rs.getString("visitor.Barangay"),
+                    rs.getString("visitor.CityMunicipality"),
+                    rs.getString("visitor.Province"),
+                };
+                table.addRow(row);
+            }
+            visitorDetails.getVisitorTable().setModel(table);
+            visitorDetails.setVisible(true);
+            this.setVisible(false);
+            rs.close();
+            pst.close();
+            con.close();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+        }
     }//GEN-LAST:event_visitorTextMouseClicked
+
+    private void attendantLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_attendantLogoMouseClicked
+         AttendantDetails attendantDetails = new AttendantDetails();
+         String database = "SELECT attendant.AttendantID, attendant.FirstName, attendant.MiddleName, attendant.LastName, attendant.SuffixName, attendant.Gender, attendant.BirthDate, attendant.ContactNo FROM attendant";
+         
+         try{
+             Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+             PreparedStatement pst = con.prepareStatement(database);
+             ResultSet rs = pst.executeQuery();
+             DefaultTableModel table = (DefaultTableModel) attendantDetails.getAttendantTable().getModel();
+             table.setRowCount(0);
+             
+             while(rs.next()){
+                 Object[] row = {
+                     rs.getLong("attendant.AttendantID"),
+                     rs.getString("attendant.FirstName"),
+                     rs.getString("attendant.MiddleName"),
+                     rs.getString("attendant.LastName"),
+                     rs.getString("attendant.SuffixName"),
+                     rs.getString("attendant.Gender"),
+                     rs.getObject("attendant.BirthDate"),
+                     rs.getLong("attendant.ContactNo"),
+                 };
+                 table.addRow(row);
+             }
+             attendantDetails.getAttendantTable().setModel(table);
+             attendantDetails.setVisible(true);
+             this.setVisible(false);
+             rs.close();
+             pst.close();
+             con.close();
+         }
+         catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+         }
+    }//GEN-LAST:event_attendantLogoMouseClicked
+
+    private void attendantTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_attendantTextMouseClicked
+         AttendantDetails attendantDetails = new AttendantDetails();
+         String database = "SELECT attendant.AttendantID, attendant.FirstName, attendant.MiddleName, attendant.LastName, attendant.SuffixName, attendant.Gender, attendant.BirthDate, attendant.ContactNo FROM attendant";
+         
+         try{
+             Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+             PreparedStatement pst = con.prepareStatement(database);
+             ResultSet rs = pst.executeQuery();
+             DefaultTableModel table = (DefaultTableModel) attendantDetails.getAttendantTable().getModel();
+             table.setRowCount(0);
+             
+             while(rs.next()){
+                 Object[] row = {
+                     rs.getLong("attendant.AttendantID"),
+                     rs.getString("attendant.FirstName"),
+                     rs.getString("attendant.MiddleName"),
+                     rs.getString("attendant.LastName"),
+                     rs.getString("attendant.SuffixName"),
+                     rs.getString("attendant.Gender"),
+                     rs.getObject("attendant.BirthDate"),
+                     rs.getLong("attendant.ContactNo"),
+                 };
+                 table.addRow(row);
+             }
+             attendantDetails.getAttendantTable().setModel(table);
+             attendantDetails.setVisible(true);
+             this.setVisible(false);
+             rs.close();
+             pst.close();
+             con.close();
+         }
+         catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+         }
+    }//GEN-LAST:event_attendantTextMouseClicked
+
+    private void reportLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportLogoMouseClicked
+         ElderlyReport elderlyReport = new ElderlyReport();
+         String database = "SELECT ElderlyID, FirstName, MiddleName, LastName, SuffixName, Gender, BirthDate, ContactNo, GuardianName, Street, Barangay, CityMunicipality, Province, AdmitDate, ElderlyRoomNo, AttendantID FROM elderly";
+         
+         try{
+             Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+             PreparedStatement pst = con.prepareStatement(database);
+             ResultSet rs = pst.executeQuery();
+             DefaultTableModel table = (DefaultTableModel) elderlyReport.getElderlyTable().getModel();
+             table.setRowCount(0);
+             
+             while(rs.next()){
+                 Object[] row = {
+                     rs.getLong("ElderlyID"),
+                     rs.getString("FirstName"),
+                     rs.getString("MiddleName"),
+                     rs.getString("LastName"),
+                     rs.getString("SuffixName"),
+                     rs.getString("Gender"),
+                     rs.getObject("BirthDate"),
+                     rs.getLong("ContactNo"),
+                     rs.getString("GuardianName"),
+                     rs.getString("Street"),
+                     rs.getString("Barangay"),
+                     rs.getString("CityMunicipality"),
+                     rs.getString("Province"),
+                     rs.getObject("AdmitDate"),
+                     rs.getLong("ElderlyRoomNo"),
+                     rs.getLong("AttendantID")
+                 };
+                 table.addRow(row);
+             }
+             elderlyReport.getElderlyTable().setModel(table);
+             elderlyReport.setVisible(true);
+             this.setVisible(false);
+             rs.close();
+             pst.close();
+             con.close();
+         }
+         catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+         }
+    }//GEN-LAST:event_reportLogoMouseClicked
+
+    private void reportTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportTextMouseClicked
+         ElderlyReport elderlyReport = new ElderlyReport();
+         String database = "SELECT ElderlyID, FirstName, MiddleName, LastName, SuffixName, Gender, BirthDate, ContactNo, GuardianName, Street, Barangay, CityMunicipality, Province, AdmitDate, ElderlyRoomNo, AttendantID FROM elderly";
+         
+         try{
+             Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+             PreparedStatement pst = con.prepareStatement(database);
+             ResultSet rs = pst.executeQuery();
+             DefaultTableModel table = (DefaultTableModel) elderlyReport.getElderlyTable().getModel();
+             table.setRowCount(0);
+             
+             while(rs.next()){
+                 Object[] row = {
+                     rs.getLong("ElderlyID"),
+                     rs.getString("FirstName"),
+                     rs.getString("MiddleName"),
+                     rs.getString("LastName"),
+                     rs.getString("SuffixName"),
+                     rs.getString("Gender"),
+                     rs.getObject("BirthDate"),
+                     rs.getLong("ContactNo"),
+                     rs.getString("GuardianName"),
+                     rs.getString("Street"),
+                     rs.getString("Barangay"),
+                     rs.getString("CityMunicipality"),
+                     rs.getString("Province"),
+                     rs.getObject("AdmitDate"),
+                     rs.getLong("ElderlyRoomNo"),
+                     rs.getLong("AttendantID")
+                 };
+                 table.addRow(row);
+             }
+             elderlyReport.getElderlyTable().setModel(table);
+             elderlyReport.setVisible(true);
+             this.setVisible(false);
+             rs.close();
+             pst.close();
+             con.close();
+         }
+         catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+         }
+    }//GEN-LAST:event_reportTextMouseClicked
+
+    private void visitorSuffixMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorSuffixMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitorSuffixMouseClicked
+
+    private void visitorSuffixMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorSuffixMousePressed
+        if(visitorSuffix.getText().equals("Suffix Name")){
+            visitorSuffix.setText("");
+            visitorSuffix.setFocusable(true);
+        }
+    }//GEN-LAST:event_visitorSuffixMousePressed
+
+    private void visitorSuffixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorSuffixActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitorSuffixActionPerformed
+
+    private void visitorGenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorGenderMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitorGenderMouseClicked
+
+    private void visitorGenderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorGenderMousePressed
+        if(visitorGender.getText().equals("Gender")){
+            visitorGender.setText("");
+            visitorGender.setFocusable(true);
+        }
+    }//GEN-LAST:event_visitorGenderMousePressed
+
+    private void visitorGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorGenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitorGenderActionPerformed
+
+    private void visitorContactMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorContactMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitorContactMouseClicked
+
+    private void visitorContactMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorContactMousePressed
+        if(visitorContact.getText().equals("Contact Number")){
+            visitorContact.setText("");
+            visitorContact.setFocusable(true);
+        }
+    }//GEN-LAST:event_visitorContactMousePressed
+
+    private void visitorContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorContactActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitorContactActionPerformed
+
+    private void visitorEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorEmailMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitorEmailMouseClicked
+
+    private void visitorEmailMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorEmailMousePressed
+        if(visitorEmail.getText().equals("Email Address")){
+            visitorEmail.setText("");
+            visitorEmail.setFocusable(true);
+        }
+    }//GEN-LAST:event_visitorEmailMousePressed
+
+    private void visitorEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitorEmailActionPerformed
+
+    private void visitorStreetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorStreetMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitorStreetMouseClicked
+
+    private void visitorStreetMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorStreetMousePressed
+        if(visitorStreet.getText().equals("Street")){
+            visitorStreet.setText("");
+            visitorStreet.setFocusable(true);
+        }
+    }//GEN-LAST:event_visitorStreetMousePressed
+
+    private void visitorStreetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorStreetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitorStreetActionPerformed
+
+    private void addDateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDateButtonActionPerformed
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+            String sql = "INSERT INTO dateofvisit(VisitorID, ElderlyID, VisitDate, VisitTime) VALUES (?, ?, ?, ?)";
+            PreparedStatement pst = con.prepareStatement(sql);
+            
+            int visitorid = Integer.parseInt(visitorID.getText());
+            pst.setInt(1, visitorid);
+            int elderlyid = Integer.parseInt(elderlyID.getText());
+            pst.setInt(2, elderlyid);
+            String visitTime = visitorVisitTime.getText();
+            pst.setString(4, visitTime);
+
+            //Date
+            DateTimeFormatter formatter;
+                    formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            
+            LocalDate visitDate = visitorVisitDate.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            String formattedVisitDate = visitDate.format(formatter);
+            pst.setString(3, formattedVisitDate);
+            
+            int result = pst.executeUpdate();
+            
+            if(result == 1){
+                JOptionPane.showMessageDialog(this, "Date Added Successfully!");
+                VisitorDetails visitorDetails = new VisitorDetails();
+                visitorDetails.setVisible(true);
+                this.setVisible(false);
+                pst.close();
+                con.close();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Record failed to add!");
+            }
+            
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+        }
+        
+        VisitorDetails visitorDetails = new VisitorDetails();
+        String database = "SELECT visitor.VisitorID, visitor.FirstName, visitor.MiddleName, visitor.LastName, visitor.SuffixName, visitor.Gender, visitor.BirthDate, visitor.Relationship, visitor.ContactNo, visitor.Email, visitor.Street, visitor.Barangay, visitor.CityMunicipality, visitor.Province FROM visitor";
+        try{
+            Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+            PreparedStatement pst = con.prepareStatement(database);
+            ResultSet rs = pst.executeQuery();
+            DefaultTableModel table = (DefaultTableModel) visitorDetails.getVisitorTable().getModel();
+            table.setRowCount(0);
+
+            while(rs.next()){
+                Object[] row = {
+                    rs.getInt("visitor.VisitorID"),
+                    rs.getString("visitor.FirstName"),
+                    rs.getString("visitor.MiddleName"),
+                    rs.getString("visitor.LastName"),
+                    rs.getString("visitor.SuffixName"),
+                    rs.getString("visitor.Gender"),
+                    rs.getObject("visitor.BirthDate"),
+                    rs.getString("visitor.Relationship"),
+                    rs.getLong("visitor.ContactNo"),
+                    rs.getString("visitor.Email"),
+                    rs.getString("visitor.Street"),
+                    rs.getString("visitor.Barangay"),
+                    rs.getString("visitor.CityMunicipality"),
+                    rs.getString("visitor.Province"),
+                };
+                table.addRow(row);
+            }
+            visitorDetails.getVisitorTable().setModel(table);
+            visitorDetails.setVisible(true);
+            this.setVisible(false);
+            rs.close();
+            pst.close();
+            con.close();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+        }
+    }//GEN-LAST:event_addDateButtonActionPerformed
+
+    private void visitorRelationshipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorRelationshipActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitorRelationshipActionPerformed
+
+    private void visitorRelationshipMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorRelationshipMousePressed
+        if(visitorRelationship.getText().equals("Relationship to Elderly")){
+            visitorRelationship.setText("");
+            visitorRelationship.setFocusable(true);
+        }
+    }//GEN-LAST:event_visitorRelationshipMousePressed
+
+    private void visitorRelationshipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorRelationshipMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitorRelationshipMouseClicked
+
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        visitorLastTextField.setFocusable(true);
+        visitorFirstTextField.setFocusable(true);
+        visitorMiddleTextField.setFocusable(true);
+        visitorSuffix.setFocusable(true);
+        visitorGender.setFocusable(true);
+        visitorBirthdate.setFocusable(true);
+        visitorContact.setFocusable(true);
+        visitorEmail.setFocusable(true);
+        visitorStreet.setFocusable(true);
+        visitorBrgy.setFocusable(true);
+        visitorCity.setFocusable(true);
+        visitorProvince.setFocusable(true);
+        visitorRelationship.setFocusable(true);
+        visitorVisitDate.setFocusable(true);
+        visitorVisitTime.setFocusable(true);
+        visitorID.setFocusable(true);
+        elderlyID.setFocusable(true);
+    }//GEN-LAST:event_formMouseEntered
+
+    private void visitorFirstTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorFirstTextFieldMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitorFirstTextFieldMouseClicked
+
+    private void visitorVisitTimeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorVisitTimeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitorVisitTimeMouseClicked
+
+    private void visitorVisitTimeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorVisitTimeMousePressed
+        if(visitorVisitTime.getText().equals("Visit Time")){
+            visitorVisitTime.setText("");
+            visitorVisitTime.setFocusable(true);
+        }
+    }//GEN-LAST:event_visitorVisitTimeMousePressed
+
+    private void visitorVisitTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorVisitTimeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitorVisitTimeActionPerformed
+
+    private void visitorContactKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_visitorContactKeyTyped
+        char c = evt.getKeyChar();
+        
+        if(!Character.isDigit(c)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_visitorContactKeyTyped
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        VisitorDetails visitorDetails = new VisitorDetails();
+        String database = "SELECT visitor.VisitorID, visitor.FirstName, visitor.MiddleName, visitor.LastName, visitor.SuffixName, visitor.Gender, visitor.BirthDate, visitor.Relationship, visitor.ContactNo, visitor.Email, visitor.Street, visitor.Barangay, visitor.CityMunicipality, visitor.Province FROM visitor";
+        try{
+            Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+            PreparedStatement pst = con.prepareStatement(database);
+            ResultSet rs = pst.executeQuery();
+            DefaultTableModel table = (DefaultTableModel) visitorDetails.getVisitorTable().getModel();
+            table.setRowCount(0);
+
+            while(rs.next()){
+                Object[] row = {
+                    rs.getInt("visitor.VisitorID"),
+                    rs.getString("visitor.FirstName"),
+                    rs.getString("visitor.MiddleName"),
+                    rs.getString("visitor.LastName"),
+                    rs.getString("visitor.SuffixName"),
+                    rs.getString("visitor.Gender"),
+                    rs.getObject("visitor.BirthDate"),
+                    rs.getString("visitor.Relationship"),
+                    rs.getLong("visitor.ContactNo"),
+                    rs.getString("visitor.Email"),
+                    rs.getString("visitor.Street"),
+                    rs.getString("visitor.Barangay"),
+                    rs.getString("visitor.CityMunicipality"),
+                    rs.getString("visitor.Province"),
+                };
+                table.addRow(row);
+            }
+            visitorDetails.getVisitorTable().setModel(table);
+            visitorDetails.setVisible(true);
+            this.setVisible(false);
+            rs.close();
+            pst.close();
+            con.close();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+        }
+    }//GEN-LAST:event_backButtonActionPerformed
+
+    private void addVisitorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVisitorButtonActionPerformed
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+            String sql = "INSERT INTO visitor(LastName, FirstName, MiddleName, SuffixName, Gender, BirthDate, ContactNo, Email, Street, Barangay, CityMunicipality, Province, Relationship) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement pst = con.prepareStatement(sql);
+            
+            String lastName = visitorLastTextField.getText();
+            pst.setString(1, lastName);
+            String firstName = visitorFirstTextField.getText();
+            pst.setString(2, firstName);
+            String middleName = visitorMiddleTextField.getText();
+            pst.setString(3, middleName);
+            String suffixName = visitorSuffix.getText();
+            pst.setString(4, suffixName);
+            String gender = visitorGender.getText();
+            pst.setString(5, gender);
+            String email = visitorEmail.getText();
+            pst.setString(8, email);
+            String street = visitorStreet.getText();
+            pst.setString(9, street);
+            String brgy = visitorBrgy.getText();
+            pst.setString(10, brgy);
+            String city = visitorCity.getText();
+            pst.setString(11, city);
+            String province = visitorProvince.getText();
+            pst.setString(12, province);
+            String relationship = visitorRelationship.getText();
+            pst.setString(13, relationship);
+
+            //Date
+            DateTimeFormatter formatter, time;
+                    formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            LocalDate birthDate = visitorBirthdate.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            String formattedBirthDate = birthDate.format(formatter);
+            pst.setString(6, formattedBirthDate);
+
+            //Contact Number
+            String contactNo = visitorContact.getText();
+            
+            if(contactNo.length() == 11){
+                long ContactNo = Long.parseLong(contactNo);
+                pst.setString(7, Long.toString(ContactNo));
+
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Invalid Contact Number");
+            }
+            
+            int result = pst.executeUpdate();
+            
+            if(result == 1){
+                JOptionPane.showMessageDialog(this, "Visitor Added Successfully!");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Record failed to add!");
+            }
+            
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+        }
+    }//GEN-LAST:event_addVisitorButtonActionPerformed
+
+    private void visitorIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorIDMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitorIDMouseClicked
+
+    private void visitorIDMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorIDMousePressed
+        if(visitorID.getText().equals("Assign to Visitor ID")){
+            visitorID.setText("");
+            visitorID.setFocusable(true);
+        }
+    }//GEN-LAST:event_visitorIDMousePressed
+
+    private void visitorIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitorIDActionPerformed
+
+    private void visitorIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_visitorIDKeyTyped
+        char c = evt.getKeyChar();
+        
+        if(!Character.isDigit(c)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_visitorIDKeyTyped
+
+    private void visitorVisitDateMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorVisitDateMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitorVisitDateMousePressed
+
+    private void elderlyIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elderlyIDMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_elderlyIDMouseClicked
+
+    private void elderlyIDMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elderlyIDMousePressed
+        if(elderlyID.getText().equals("Assign to Elderly ID")){
+            elderlyID.setText("");
+            elderlyID.setFocusable(true);
+        }
+    }//GEN-LAST:event_elderlyIDMousePressed
+
+    private void elderlyIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elderlyIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_elderlyIDActionPerformed
+
+    private void elderlyIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_elderlyIDKeyTyped
+        char c = evt.getKeyChar();
+        
+        if(!Character.isDigit(c)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_elderlyIDKeyTyped
+
+    private void adminLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminLogoMouseClicked
+        VisitorInformationLogOut logout = new VisitorInformationLogOut();
+        logout.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_adminLogoMouseClicked
+
+    private void adminSettingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminSettingsMouseClicked
+        VisitorInformationLogOut logout = new VisitorInformationLogOut();
+        logout.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_adminSettingsMouseClicked
 
     /**
      * @param args the command line arguments
@@ -780,25 +1770,34 @@ public class VisitorInformation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addDateButton;
     private javax.swing.JButton addVisitorButton;
     private javax.swing.JLabel adminLogo;
     private javax.swing.JLabel adminSettings;
+    private javax.swing.JLabel attendantLogo;
+    private javax.swing.JLabel attendantText;
+    private javax.swing.JButton backButton;
     private javax.swing.JLabel careFacilitytxt;
     private javax.swing.JLabel closeWhiteLogo;
     private javax.swing.JLabel dashboardLogo;
     private javax.swing.JPanel dashboardNavBG;
     private javax.swing.JPanel dashboardSideBarBG;
     private javax.swing.JLabel dashboardText;
+    private javax.swing.JLabel dateInfoText;
+    private javax.swing.JTextField elderlyID;
+    private javax.swing.JLabel elderlyIDText;
     private javax.swing.JLabel elderlyLogo;
     private javax.swing.JLabel elderlyText;
     private javax.swing.JLabel minimizeWhiteLogo;
     private javax.swing.JPanel personalInfoBG;
     private javax.swing.JLabel personalInfoText;
+    private javax.swing.JPanel personalVisitInfoBG;
     private javax.swing.JLabel reportLogo;
     private javax.swing.JLabel reportText;
     private javax.swing.JLabel stJudetxt;
     private javax.swing.JLabel visitorAddressText;
     private javax.swing.JLabel visitorAdmitDateText;
+    private javax.swing.JLabel visitorAdmitTimeText;
     private javax.swing.JLabel visitorBackground;
     private com.toedter.calendar.JDateChooser visitorBirthdate;
     private javax.swing.JLabel visitorBirthdateText;
@@ -814,17 +1813,24 @@ public class VisitorInformation extends javax.swing.JFrame {
     private javax.swing.JTextField visitorFirstTextField;
     private javax.swing.JTextField visitorGender;
     private javax.swing.JLabel visitorGenderText;
+    private javax.swing.JTextField visitorID;
+    private javax.swing.JLabel visitorIDText;
     private javax.swing.JLabel visitorInformationText;
     private javax.swing.JLabel visitorLastName;
     private javax.swing.JTextField visitorLastTextField;
     private javax.swing.JLabel visitorLogo;
     private javax.swing.JLabel visitorMiddleText;
     private javax.swing.JTextField visitorMiddleTextField;
-    private javax.swing.JTextField visitorRegion;
-    private javax.swing.JLabel visitorRegionText;
+    private javax.swing.JTextField visitorProvince;
+    private javax.swing.JLabel visitorProvinceText;
+    private javax.swing.JTextField visitorRelationship;
+    private javax.swing.JLabel visitorRelationshipText;
     private javax.swing.JTextField visitorStreet;
     private javax.swing.JLabel visitorStreetText;
+    private javax.swing.JTextField visitorSuffix;
+    private javax.swing.JLabel visitorSuffixText;
     private javax.swing.JLabel visitorText;
     private com.toedter.calendar.JDateChooser visitorVisitDate;
+    private javax.swing.JTextField visitorVisitTime;
     // End of variables declaration//GEN-END:variables
 }

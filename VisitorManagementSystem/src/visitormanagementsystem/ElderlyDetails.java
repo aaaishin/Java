@@ -7,6 +7,7 @@ package visitormanagementsystem;
 import java.awt.*;
 import java.sql.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +18,9 @@ public class ElderlyDetails extends javax.swing.JFrame {
     /**
      * Creates new form Dashboard
      */
+    
+    ImageIcon logo = new ImageIcon("C:\\Users\\justi\\Desktop\\Programming\\Java\\VisitorManagementSystem\\src\\assets\\SJCF_LOGO.png");
+    
     public ElderlyDetails() {
         initComponents();
     }
@@ -46,8 +50,12 @@ public class ElderlyDetails extends javax.swing.JFrame {
         elderlyLogo = new javax.swing.JLabel();
         dashboardText = new javax.swing.JLabel();
         dashboardLogo = new javax.swing.JLabel();
+        attendantText = new javax.swing.JLabel();
+        attendantLogo = new javax.swing.JLabel();
         elderlyBackground = new javax.swing.JPanel();
         elderlyDetailsText = new javax.swing.JLabel();
+        deleteElderlyButton = new javax.swing.JButton();
+        updateElderlyButton = new javax.swing.JButton();
         addElderlyButton = new javax.swing.JButton();
         elderlyScroll = new javax.swing.JScrollPane();
         elderlyTable = new javax.swing.JTable();
@@ -71,7 +79,13 @@ public class ElderlyDetails extends javax.swing.JFrame {
         adminSettings.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         adminSettings.setForeground(new java.awt.Color(255, 255, 255));
         adminSettings.setText("ADMINISTRATOR");
+        adminSettings.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         adminSettings.setFocusable(false);
+        adminSettings.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminSettingsMouseClicked(evt);
+            }
+        });
         elderlyNavBG.add(adminSettings, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 0, -1, 60));
 
         careFacilitytxt.setFont(new java.awt.Font("Segoe UI Light", 1, 36)); // NOI18N
@@ -81,6 +95,12 @@ public class ElderlyDetails extends javax.swing.JFrame {
         elderlyNavBG.add(careFacilitytxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, -1, 60));
 
         adminLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/adminLogo.png"))); // NOI18N
+        adminLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        adminLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminLogoMouseClicked(evt);
+            }
+        });
         elderlyNavBG.add(adminLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, -1));
 
         minimizeWhiteLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/minimizeWhiteLogo.png"))); // NOI18N
@@ -114,11 +134,21 @@ public class ElderlyDetails extends javax.swing.JFrame {
         reportText.setForeground(new java.awt.Color(255, 255, 255));
         reportText.setText("REPORT");
         reportText.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        elderlySideBarBG.add(reportText, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, -1));
+        reportText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reportTextMouseClicked(evt);
+            }
+        });
+        elderlySideBarBG.add(reportText, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, -1, -1));
 
         reportLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/reportLogo.png"))); // NOI18N
         reportLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        elderlySideBarBG.add(reportLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
+        reportLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reportLogoMouseClicked(evt);
+            }
+        });
+        elderlySideBarBG.add(reportLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, -1, -1));
 
         visitorText.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         visitorText.setForeground(new java.awt.Color(255, 255, 255));
@@ -170,7 +200,27 @@ public class ElderlyDetails extends javax.swing.JFrame {
         });
         elderlySideBarBG.add(dashboardLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
-        getContentPane().add(elderlySideBarBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 160, 510));
+        attendantText.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        attendantText.setForeground(new java.awt.Color(255, 255, 255));
+        attendantText.setText("ATTENDANT");
+        attendantText.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        attendantText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                attendantTextMouseClicked(evt);
+            }
+        });
+        elderlySideBarBG.add(attendantText, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
+
+        attendantLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/attendantLogo.png"))); // NOI18N
+        attendantLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        attendantLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                attendantLogoMouseClicked(evt);
+            }
+        });
+        elderlySideBarBG.add(attendantLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
+
+        getContentPane().add(elderlySideBarBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 160, 560));
 
         elderlyBackground.setBackground(new java.awt.Color(238, 238, 238));
         elderlyBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -180,6 +230,40 @@ public class ElderlyDetails extends javax.swing.JFrame {
         elderlyDetailsText.setText("ELDERLY DETAILS");
         elderlyDetailsText.setFocusable(false);
         elderlyBackground.add(elderlyDetailsText, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 310, 30));
+
+        deleteElderlyButton.setBackground(new java.awt.Color(129, 159, 29));
+        deleteElderlyButton.setFont(new java.awt.Font("Verdana Pro Black", 1, 18)); // NOI18N
+        deleteElderlyButton.setForeground(new java.awt.Color(255, 255, 255));
+        deleteElderlyButton.setText("- DELETE ELDERLY");
+        deleteElderlyButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteElderlyButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteElderlyButtonMouseClicked(evt);
+            }
+        });
+        deleteElderlyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteElderlyButtonActionPerformed(evt);
+            }
+        });
+        elderlyBackground.add(deleteElderlyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 70, 250, 40));
+
+        updateElderlyButton.setBackground(new java.awt.Color(129, 159, 29));
+        updateElderlyButton.setFont(new java.awt.Font("Verdana Pro Black", 1, 18)); // NOI18N
+        updateElderlyButton.setForeground(new java.awt.Color(255, 255, 255));
+        updateElderlyButton.setText("UPDATE ELDERLY");
+        updateElderlyButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        updateElderlyButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateElderlyButtonMouseClicked(evt);
+            }
+        });
+        updateElderlyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateElderlyButtonActionPerformed(evt);
+            }
+        });
+        elderlyBackground.add(updateElderlyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, 240, 40));
 
         addElderlyButton.setBackground(new java.awt.Color(129, 159, 29));
         addElderlyButton.setFont(new java.awt.Font("Verdana Pro Black", 1, 18)); // NOI18N
@@ -196,10 +280,11 @@ public class ElderlyDetails extends javax.swing.JFrame {
                 addElderlyButtonActionPerformed(evt);
             }
         });
-        elderlyBackground.add(addElderlyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 70, 220, 40));
+        elderlyBackground.add(addElderlyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 70, 220, 40));
 
-        elderlyTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(129, 159, 29), 5, true));
-        elderlyTable.setForeground(new java.awt.Color(255, 255, 255));
+        elderlyTable.setBackground(new java.awt.Color(231, 228, 228));
+        elderlyTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(129, 159, 29), 1, true));
+        elderlyTable.setForeground(new java.awt.Color(107, 132, 22));
         elderlyTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -208,11 +293,11 @@ public class ElderlyDetails extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ElderlyID", "FirstName", "MiddleName", "LastName", "SuffixName", "BirthDate", "Gender", "ContactNo", "GuardianName", "Street", "Barangay", "CityMunicipality", "Region", "AdmitDate", "ElderlyRoomNo"
+                "ElderlyID", "FirstName", "MiddleName", "LastName", "SuffixName", "Gender", "BirthDate", "ContactNo", "GuardianName", "Street", "Barangay", "CityMunicipality", "Province", "AdmitDate", "ElderlyRoomNo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Long.class
+                java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Long.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
@@ -236,9 +321,9 @@ public class ElderlyDetails extends javax.swing.JFrame {
         elderlyTable.setShowGrid(true);
         elderlyScroll.setViewportView(elderlyTable);
 
-        elderlyBackground.add(elderlyScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 1250, 440));
+        elderlyBackground.add(elderlyScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 1250, 490));
 
-        getContentPane().add(elderlyBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1430, 570));
+        getContentPane().add(elderlyBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1430, 620));
 
         pack();
         setLocationRelativeTo(null);
@@ -259,32 +344,375 @@ public class ElderlyDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_addElderlyButtonActionPerformed
 
     private void dashboardLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardLogoMouseClicked
-        this.setVisible(false);
-        new Dashboard().setVisible(true);
+        Dashboard dashboard = new Dashboard();
+        try{
+            String database = "SELECT COUNT(*) AS visitorCount FROM visitor";
+            Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+            PreparedStatement pst = con.prepareStatement(database);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                int count = rs.getInt("visitorCount");
+                dashboard.visitorCounter.setText(String.valueOf(count));
+            }
+            
+            dashboard.setVisible(true);
+            this.setVisible(false);
+            rs.close();
+            pst.close();
+            con.close();
+        
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+        }
+        try{
+            String database = "SELECT COUNT(*) AS elderlyCount FROM elderly";
+            Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+            PreparedStatement pst = con.prepareStatement(database);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                int count = rs.getInt("elderlyCount");
+                dashboard.elderlyCounter.setText(String.valueOf(count));
+            }
+            
+            dashboard.setVisible(true);
+            this.setVisible(false);
+            rs.close();
+            pst.close();
+            con.close();
+        
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+        }
     }//GEN-LAST:event_dashboardLogoMouseClicked
 
     private void dashboardTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardTextMouseClicked
-        this.setVisible(false);
-        new Dashboard().setVisible(true);
+        Dashboard dashboard = new Dashboard();
+        try{
+            String database = "SELECT COUNT(*) AS visitorCount FROM visitor";
+            Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+            PreparedStatement pst = con.prepareStatement(database);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                int count = rs.getInt("visitorCount");
+                dashboard.visitorCounter.setText(String.valueOf(count));
+            }
+            
+            dashboard.setVisible(true);
+            this.setVisible(false);
+            rs.close();
+            pst.close();
+            con.close();
+        
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+        }
+        try{
+            String database = "SELECT COUNT(*) AS elderlyCount FROM elderly";
+            Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+            PreparedStatement pst = con.prepareStatement(database);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                int count = rs.getInt("elderlyCount");
+                dashboard.elderlyCounter.setText(String.valueOf(count));
+            }
+            
+            dashboard.setVisible(true);
+            this.setVisible(false);
+            rs.close();
+            pst.close();
+            con.close();
+        
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+        }
     }//GEN-LAST:event_dashboardTextMouseClicked
 
     private void visitorLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorLogoMouseClicked
-        this.setVisible(false);
-        new VisitorDetails().setVisible(true);
+        VisitorDetails visitorDetails = new VisitorDetails();
+        String database = "SELECT visitor.VisitorID, visitor.FirstName, visitor.MiddleName, visitor.LastName, visitor.SuffixName, visitor.Gender, visitor.BirthDate, visitor.Relationship, visitor.ContactNo, visitor.Email, visitor.Street, visitor.Barangay, visitor.CityMunicipality, visitor.Province FROM visitor";
+        try{
+            Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+            PreparedStatement pst = con.prepareStatement(database);
+            ResultSet rs = pst.executeQuery();
+            DefaultTableModel table = (DefaultTableModel) visitorDetails.getVisitorTable().getModel();
+            table.setRowCount(0);
+
+            while(rs.next()){
+                Object[] row = {
+                    rs.getInt("visitor.VisitorID"),
+                    rs.getString("visitor.FirstName"),
+                    rs.getString("visitor.MiddleName"),
+                    rs.getString("visitor.LastName"),
+                    rs.getString("visitor.SuffixName"),
+                    rs.getString("visitor.Gender"),
+                    rs.getObject("visitor.BirthDate"),
+                    rs.getString("visitor.Relationship"),
+                    rs.getLong("visitor.ContactNo"),
+                    rs.getString("visitor.Email"),
+                    rs.getString("visitor.Street"),
+                    rs.getString("visitor.Barangay"),
+                    rs.getString("visitor.CityMunicipality"),
+                    rs.getString("visitor.Province"),
+                };
+                table.addRow(row);
+            }
+            visitorDetails.getVisitorTable().setModel(table);
+            visitorDetails.setVisible(true);
+            this.setVisible(false);
+            rs.close();
+            pst.close();
+            con.close();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+        }
     }//GEN-LAST:event_visitorLogoMouseClicked
 
     private void visitorTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visitorTextMouseClicked
-        this.setVisible(false);
-        new VisitorDetails().setVisible(true);
+        VisitorDetails visitorDetails = new VisitorDetails();
+        String database = "SELECT visitor.VisitorID, visitor.FirstName, visitor.MiddleName, visitor.LastName, visitor.SuffixName, visitor.Gender, visitor.BirthDate, visitor.Relationship, visitor.ContactNo, visitor.Email, visitor.Street, visitor.Barangay, visitor.CityMunicipality, visitor.Province FROM visitor";
+        try{
+            Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+            PreparedStatement pst = con.prepareStatement(database);
+            ResultSet rs = pst.executeQuery();
+            DefaultTableModel table = (DefaultTableModel) visitorDetails.getVisitorTable().getModel();
+            table.setRowCount(0);
+
+            while(rs.next()){
+                Object[] row = {
+                    rs.getInt("visitor.VisitorID"),
+                    rs.getString("visitor.FirstName"),
+                    rs.getString("visitor.MiddleName"),
+                    rs.getString("visitor.LastName"),
+                    rs.getString("visitor.SuffixName"),
+                    rs.getString("visitor.Gender"),
+                    rs.getObject("visitor.BirthDate"),
+                    rs.getString("visitor.Relationship"),
+                    rs.getLong("visitor.ContactNo"),
+                    rs.getString("visitor.Email"),
+                    rs.getString("visitor.Street"),
+                    rs.getString("visitor.Barangay"),
+                    rs.getString("visitor.CityMunicipality"),
+                    rs.getString("visitor.Province"),
+                };
+                table.addRow(row);
+            }
+            visitorDetails.getVisitorTable().setModel(table);
+            visitorDetails.setVisible(true);
+            this.setVisible(false);
+            rs.close();
+            pst.close();
+            con.close();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+        }
     }//GEN-LAST:event_visitorTextMouseClicked
 
     private void addElderlyButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addElderlyButtonMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_addElderlyButtonMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    private void attendantLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_attendantLogoMouseClicked
+         AttendantDetails attendantDetails = new AttendantDetails();
+         String database = "SELECT attendant.AttendantID, attendant.FirstName, attendant.MiddleName, attendant.LastName, attendant.SuffixName, attendant.Gender, attendant.BirthDate, attendant.ContactNo FROM attendant";
+         
+         try{
+             Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+             PreparedStatement pst = con.prepareStatement(database);
+             ResultSet rs = pst.executeQuery();
+             DefaultTableModel table = (DefaultTableModel) attendantDetails.getAttendantTable().getModel();
+             table.setRowCount(0);
+             
+             while(rs.next()){
+                 Object[] row = {
+                     rs.getLong("attendant.AttendantID"),
+                     rs.getString("attendant.FirstName"),
+                     rs.getString("attendant.MiddleName"),
+                     rs.getString("attendant.LastName"),
+                     rs.getString("attendant.SuffixName"),
+                     rs.getString("attendant.Gender"),
+                     rs.getObject("attendant.BirthDate"),
+                     rs.getLong("attendant.ContactNo"),
+                 };
+                 table.addRow(row);
+             }
+             attendantDetails.getAttendantTable().setModel(table);
+             attendantDetails.setVisible(true);
+             this.setVisible(false);
+             rs.close();
+             pst.close();
+             con.close();
+         }
+         catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+         }
+    }//GEN-LAST:event_attendantLogoMouseClicked
+
+    private void attendantTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_attendantTextMouseClicked
+         AttendantDetails attendantDetails = new AttendantDetails();
+         String database = "SELECT attendant.AttendantID, attendant.FirstName, attendant.MiddleName, attendant.LastName, attendant.SuffixName, attendant.Gender, attendant.BirthDate, attendant.ContactNo FROM attendant";
+         
+         try{
+             Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+             PreparedStatement pst = con.prepareStatement(database);
+             ResultSet rs = pst.executeQuery();
+             DefaultTableModel table = (DefaultTableModel) attendantDetails.getAttendantTable().getModel();
+             table.setRowCount(0);
+             
+             while(rs.next()){
+                 Object[] row = {
+                     rs.getLong("attendant.AttendantID"),
+                     rs.getString("attendant.FirstName"),
+                     rs.getString("attendant.MiddleName"),
+                     rs.getString("attendant.LastName"),
+                     rs.getString("attendant.SuffixName"),
+                     rs.getString("attendant.Gender"),
+                     rs.getObject("attendant.BirthDate"),
+                     rs.getLong("attendant.ContactNo"),
+                 };
+                 table.addRow(row);
+             }
+             attendantDetails.getAttendantTable().setModel(table);
+             attendantDetails.setVisible(true);
+             this.setVisible(false);
+             rs.close();
+             pst.close();
+             con.close();
+         }
+         catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+         }
+    }//GEN-LAST:event_attendantTextMouseClicked
+
+    private void reportLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportLogoMouseClicked
+         ElderlyReport elderlyReport = new ElderlyReport();
+         String database = "SELECT ElderlyID, FirstName, MiddleName, LastName, SuffixName, Gender, BirthDate, ContactNo, GuardianName, Street, Barangay, CityMunicipality, Province, AdmitDate, ElderlyRoomNo, AttendantID FROM elderly";
+         
+         try{
+             Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+             PreparedStatement pst = con.prepareStatement(database);
+             ResultSet rs = pst.executeQuery();
+             DefaultTableModel table = (DefaultTableModel) elderlyReport.getElderlyTable().getModel();
+             table.setRowCount(0);
+             
+             while(rs.next()){
+                 Object[] row = {
+                     rs.getLong("ElderlyID"),
+                     rs.getString("FirstName"),
+                     rs.getString("MiddleName"),
+                     rs.getString("LastName"),
+                     rs.getString("SuffixName"),
+                     rs.getString("Gender"),
+                     rs.getObject("BirthDate"),
+                     rs.getLong("ContactNo"),
+                     rs.getString("GuardianName"),
+                     rs.getString("Street"),
+                     rs.getString("Barangay"),
+                     rs.getString("CityMunicipality"),
+                     rs.getString("Province"),
+                     rs.getObject("AdmitDate"),
+                     rs.getLong("ElderlyRoomNo"),
+                     rs.getLong("AttendantID")
+                 };
+                 table.addRow(row);
+             }
+             elderlyReport.getElderlyTable().setModel(table);
+             elderlyReport.setVisible(true);
+             this.setVisible(false);
+             rs.close();
+             pst.close();
+             con.close();
+         }
+         catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+         }
+    }//GEN-LAST:event_reportLogoMouseClicked
+
+    private void reportTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportTextMouseClicked
+         ElderlyReport elderlyReport = new ElderlyReport();
+         String database = "SELECT ElderlyID, FirstName, MiddleName, LastName, SuffixName, Gender, BirthDate, ContactNo, GuardianName, Street, Barangay, CityMunicipality, Province, AdmitDate, ElderlyRoomNo, AttendantID FROM elderly";
+         
+         try{
+             Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
+             PreparedStatement pst = con.prepareStatement(database);
+             ResultSet rs = pst.executeQuery();
+             DefaultTableModel table = (DefaultTableModel) elderlyReport.getElderlyTable().getModel();
+             table.setRowCount(0);
+             
+             while(rs.next()){
+                 Object[] row = {
+                     rs.getLong("ElderlyID"),
+                     rs.getString("FirstName"),
+                     rs.getString("MiddleName"),
+                     rs.getString("LastName"),
+                     rs.getString("SuffixName"),
+                     rs.getString("Gender"),
+                     rs.getObject("BirthDate"),
+                     rs.getLong("ContactNo"),
+                     rs.getString("GuardianName"),
+                     rs.getString("Street"),
+                     rs.getString("Barangay"),
+                     rs.getString("CityMunicipality"),
+                     rs.getString("Province"),
+                     rs.getObject("AdmitDate"),
+                     rs.getLong("ElderlyRoomNo"),
+                     rs.getLong("AttendantID")
+                 };
+                 table.addRow(row);
+             }
+             elderlyReport.getElderlyTable().setModel(table);
+             elderlyReport.setVisible(true);
+             this.setVisible(false);
+             rs.close();
+             pst.close();
+             con.close();
+         }
+         catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Connection Error!" + e.getMessage());
+         }
+    }//GEN-LAST:event_reportTextMouseClicked
+
+    private void deleteElderlyButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteElderlyButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteElderlyButtonMouseClicked
+
+    private void deleteElderlyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteElderlyButtonActionPerformed
+         ElderlyDelete elderlyDelete = new ElderlyDelete();
+         elderlyDelete.setVisible(true);
+         this.setVisible(false);
+    }//GEN-LAST:event_deleteElderlyButtonActionPerformed
+
+    private void updateElderlyButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateElderlyButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateElderlyButtonMouseClicked
+
+    private void updateElderlyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateElderlyButtonActionPerformed
+         ElderlyUpdate elderlyUpdate = new ElderlyUpdate();
+         elderlyUpdate.setVisible(true);this.setVisible(false);
+         this.setVisible(false);
+    }//GEN-LAST:event_updateElderlyButtonActionPerformed
+
+    private void adminLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminLogoMouseClicked
+        ElderlyDetailsLogOut logout = new ElderlyDetailsLogOut();
+        logout.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_adminLogoMouseClicked
+
+    private void adminSettingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminSettingsMouseClicked
+        ElderlyDetailsLogOut logout = new ElderlyDetailsLogOut();
+        logout.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_adminSettingsMouseClicked
+
+    public JTable getElderlyTable(){
+        return elderlyTable;
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -324,10 +752,13 @@ public class ElderlyDetails extends javax.swing.JFrame {
     private javax.swing.JButton addElderlyButton;
     private javax.swing.JLabel adminLogo;
     private javax.swing.JLabel adminSettings;
+    private javax.swing.JLabel attendantLogo;
+    private javax.swing.JLabel attendantText;
     private javax.swing.JLabel careFacilitytxt;
     private javax.swing.JLabel closeWhiteLogo;
     private javax.swing.JLabel dashboardLogo;
     private javax.swing.JLabel dashboardText;
+    private javax.swing.JButton deleteElderlyButton;
     private javax.swing.JPanel elderlyBackground;
     private javax.swing.JLabel elderlyDetailsText;
     private javax.swing.JLabel elderlyLogo;
@@ -340,6 +771,7 @@ public class ElderlyDetails extends javax.swing.JFrame {
     private javax.swing.JLabel reportLogo;
     private javax.swing.JLabel reportText;
     private javax.swing.JLabel stJudetxt;
+    private javax.swing.JButton updateElderlyButton;
     private javax.swing.JLabel visitorLogo;
     private javax.swing.JLabel visitorText;
     // End of variables declaration//GEN-END:variables

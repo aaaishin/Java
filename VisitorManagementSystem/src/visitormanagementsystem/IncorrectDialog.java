@@ -5,6 +5,7 @@
 package visitormanagementsystem;
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -15,6 +16,9 @@ public class IncorrectDialog extends javax.swing.JFrame {
     /**
      * Creates new form ExitDialog
      */
+    
+    ImageIcon logo = new ImageIcon("C:\\Users\\justi\\Desktop\\Programming\\Java\\VisitorManagementSystem\\src\\assets\\SJCF_LOGO.png");
+    
     public IncorrectDialog() {
         initComponents();
         setBackground(new Color(0,0,0,0));
