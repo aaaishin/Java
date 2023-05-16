@@ -58,12 +58,14 @@ public class DateOfVisitDetails extends javax.swing.JFrame {
         visitorDetailsText = new javax.swing.JLabel();
         visitorScroll = new javax.swing.JScrollPane();
         dateofvisitTable = new javax.swing.JTable();
+        deleteDate = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         searchLogo = new javax.swing.JLabel();
         searchField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("St. Jude Care Facility");
+        setIconImage(logo.getImage());
         setName("dashboardFrame"); // NOI18N
         setUndecorated(true);
         setResizable(false);
@@ -272,6 +274,23 @@ public class DateOfVisitDetails extends javax.swing.JFrame {
 
         visitorBackground.add(visitorScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 1250, 490));
 
+        deleteDate.setBackground(new java.awt.Color(129, 159, 29));
+        deleteDate.setFont(new java.awt.Font("Verdana Pro Black", 1, 18)); // NOI18N
+        deleteDate.setForeground(new java.awt.Color(255, 255, 255));
+        deleteDate.setText("DELETE DATE");
+        deleteDate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteDate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteDateMouseClicked(evt);
+            }
+        });
+        deleteDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteDateActionPerformed(evt);
+            }
+        });
+        visitorBackground.add(deleteDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 70, 190, 40));
+
         backButton.setBackground(new java.awt.Color(129, 159, 29));
         backButton.setFont(new java.awt.Font("Verdana Pro Black", 1, 18)); // NOI18N
         backButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -290,7 +309,7 @@ public class DateOfVisitDetails extends javax.swing.JFrame {
         visitorBackground.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 70, 190, 40));
 
         searchLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/searchLogo.png"))); // NOI18N
-        visitorBackground.add(searchLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 80, -1, -1));
+        visitorBackground.add(searchLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 80, -1, -1));
 
         searchField.setBackground(new java.awt.Color(231, 228, 228));
         searchField.setForeground(new java.awt.Color(107, 132, 22));
@@ -317,7 +336,7 @@ public class DateOfVisitDetails extends javax.swing.JFrame {
                 searchFieldKeyReleased(evt);
             }
         });
-        visitorBackground.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 70, 510, 40));
+        visitorBackground.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, 410, 40));
 
         getContentPane().add(visitorBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1430, 620));
 
@@ -759,6 +778,16 @@ public class DateOfVisitDetails extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_adminSettingsMouseClicked
 
+    private void deleteDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteDateMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteDateMouseClicked
+
+    private void deleteDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDateActionPerformed
+        DateOfVisitDetailsDelete dateofvisitDelete = new DateOfVisitDetailsDelete();
+        dateofvisitDelete.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_deleteDateActionPerformed
+
     public JTable getDateOfVisitTable(){
         return dateofvisitTable;
     }
@@ -844,6 +873,7 @@ public class DateOfVisitDetails extends javax.swing.JFrame {
     private javax.swing.JLabel dashboardLogo;
     private javax.swing.JLabel dashboardText;
     private javax.swing.JTable dateofvisitTable;
+    private javax.swing.JButton deleteDate;
     private javax.swing.JLabel elderlyLogo;
     private javax.swing.JLabel elderlyText;
     private javax.swing.JLabel minimizeWhiteLogo;

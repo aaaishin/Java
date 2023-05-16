@@ -106,6 +106,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("St. Jude Care Facility");
+        setIconImage(logo.getImage());
         setName("dashboardFrame"); // NOI18N
         setUndecorated(true);
         setResizable(false);
@@ -159,6 +160,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
         visitorFirstTextField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         visitorFirstTextField.setForeground(new java.awt.Color(107, 132, 22));
         visitorFirstTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorFirstTextField.setToolTipText("First Name");
         visitorFirstTextField.setBorder(null);
         visitorFirstTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -179,6 +181,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
         visitorMiddleTextField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         visitorMiddleTextField.setForeground(new java.awt.Color(107, 132, 22));
         visitorMiddleTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorMiddleTextField.setToolTipText("Middle Name");
         visitorMiddleTextField.setBorder(null);
         visitorMiddleTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -229,6 +232,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
         visitorBrgy.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         visitorBrgy.setForeground(new java.awt.Color(107, 132, 22));
         visitorBrgy.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorBrgy.setToolTipText("Barangay");
         visitorBrgy.setBorder(null);
         visitorBrgy.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -255,6 +259,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
         visitorCity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         visitorCity.setForeground(new java.awt.Color(107, 132, 22));
         visitorCity.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorCity.setToolTipText("City");
         visitorCity.setBorder(null);
         visitorCity.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -281,6 +286,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
         visitorProvince.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         visitorProvince.setForeground(new java.awt.Color(107, 132, 22));
         visitorProvince.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorProvince.setToolTipText("Province");
         visitorProvince.setBorder(null);
         visitorProvince.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -313,6 +319,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
         visitorSuffix.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         visitorSuffix.setForeground(new java.awt.Color(107, 132, 22));
         visitorSuffix.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorSuffix.setToolTipText("Suffix Name");
         visitorSuffix.setBorder(null);
         visitorSuffix.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -345,6 +352,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
         visitorGender.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         visitorGender.setForeground(new java.awt.Color(107, 132, 22));
         visitorGender.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorGender.setToolTipText("Gender");
         visitorGender.setBorder(null);
         visitorGender.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -369,6 +377,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
 
         visitorBirthdate.setBackground(new java.awt.Color(231, 228, 228));
         visitorBirthdate.setForeground(new java.awt.Color(107, 132, 22));
+        visitorBirthdate.setToolTipText("Birth Date");
         visitorBirthdate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         personalInfoBG.add(visitorBirthdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 240, 40));
 
@@ -382,6 +391,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
         visitorContact.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         visitorContact.setForeground(new java.awt.Color(107, 132, 22));
         visitorContact.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorContact.setToolTipText("Contact Number");
         visitorContact.setBorder(null);
         visitorContact.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -413,6 +423,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
         visitorEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         visitorEmail.setForeground(new java.awt.Color(107, 132, 22));
         visitorEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorEmail.setToolTipText("Email Address");
         visitorEmail.setBorder(null);
         visitorEmail.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -433,6 +444,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
         visitorStreet.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         visitorStreet.setForeground(new java.awt.Color(107, 132, 22));
         visitorStreet.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorStreet.setToolTipText("Street");
         visitorStreet.setBorder(null);
         visitorStreet.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -471,6 +483,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
         visitorRelationship.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         visitorRelationship.setForeground(new java.awt.Color(107, 132, 22));
         visitorRelationship.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorRelationship.setToolTipText("Relationship");
         visitorRelationship.setBorder(null);
         visitorRelationship.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -491,6 +504,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
         visitorID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         visitorID.setForeground(new java.awt.Color(107, 132, 22));
         visitorID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorID.setToolTipText("Visitor ID");
         visitorID.setBorder(null);
         visitorID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -526,6 +540,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
 
         visitorVisitDate.setBackground(new java.awt.Color(231, 228, 228));
         visitorVisitDate.setForeground(new java.awt.Color(107, 132, 22));
+        visitorVisitDate.setToolTipText("Visit Date");
         visitorVisitDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         visitorVisitDate.setName("visitorVisitDate"); // NOI18N
         visitorVisitDate.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -539,6 +554,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
         visitElderlyID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         visitElderlyID.setForeground(new java.awt.Color(107, 132, 22));
         visitElderlyID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitElderlyID.setToolTipText("Elderly ID");
         visitElderlyID.setBorder(null);
         visitElderlyID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -564,6 +580,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
         visitVisitorID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         visitVisitorID.setForeground(new java.awt.Color(107, 132, 22));
         visitVisitorID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitVisitorID.setToolTipText("Visitor ID");
         visitVisitorID.setBorder(null);
         visitVisitorID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -589,6 +606,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
         visitorVisitTime.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         visitorVisitTime.setForeground(new java.awt.Color(107, 132, 22));
         visitorVisitTime.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        visitorVisitTime.setToolTipText("Visit Time");
         visitorVisitTime.setBorder(null);
         visitorVisitTime.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -625,7 +643,7 @@ public class VisitorUpdate extends javax.swing.JFrame {
 
         elderlyIDText.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         elderlyIDText.setForeground(new java.awt.Color(107, 132, 22));
-        elderlyIDText.setText("Assign to ElderlyID*");
+        elderlyIDText.setText("ElderlyID to Visit*");
         elderlyIDText.setFocusable(false);
         personalVisitInfoBG.add(elderlyIDText, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 130, 20));
 

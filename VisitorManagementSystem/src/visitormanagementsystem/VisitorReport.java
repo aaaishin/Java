@@ -74,6 +74,7 @@ public class VisitorReport extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("St. Jude Care Facility");
+        setIconImage(logo.getImage());
         setName("dashboardFrame"); // NOI18N
         setUndecorated(true);
         setResizable(false);

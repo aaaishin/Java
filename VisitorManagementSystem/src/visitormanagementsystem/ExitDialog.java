@@ -40,6 +40,7 @@ public class ExitDialog extends javax.swing.JFrame {
         exitDialogbg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(logo.getImage());
         setName("exitDialog"); // NOI18N
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

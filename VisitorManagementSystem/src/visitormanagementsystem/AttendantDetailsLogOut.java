@@ -49,6 +49,7 @@ public class AttendantDetailsLogOut extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("St. Jude Care Facility");
+        setIconImage(logo.getImage());
         setName("dashboardFrame"); // NOI18N
         setUndecorated(true);
         setResizable(false);
@@ -137,6 +138,7 @@ public class AttendantDetailsLogOut extends javax.swing.JFrame {
     }//GEN-LAST:event_LogOutButtonMouseClicked
 
     private void LogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutButtonActionPerformed
+        //it will logout and close all the GUI and go back to the login screen
         new Dashboard().setVisible(false);
         new VisitorDetails().setVisible(false);
         new VisitorInformation().setVisible(false);
@@ -161,7 +163,8 @@ public class AttendantDetailsLogOut extends javax.swing.JFrame {
     }//GEN-LAST:event_BackButtonMouseClicked
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
-         AttendantDetails attendantDetails = new AttendantDetails();
+        //Going back to the attendantdetails with its table content 
+        AttendantDetails attendantDetails = new AttendantDetails();
          String database = "SELECT attendant.AttendantID, attendant.FirstName, attendant.MiddleName, attendant.LastName, attendant.SuffixName, attendant.Gender, attendant.BirthDate, attendant.ContactNo FROM attendant";
          
          try{

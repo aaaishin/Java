@@ -112,6 +112,7 @@ public class ElderlyInformation extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("St. Jude Care Facility");
+        setIconImage(logo.getImage());
         setName("dashboardFrame"); // NOI18N
         setUndecorated(true);
         setResizable(false);
@@ -333,6 +334,7 @@ public class ElderlyInformation extends javax.swing.JFrame {
         elderlyFirstTextField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         elderlyFirstTextField.setForeground(new java.awt.Color(107, 132, 22));
         elderlyFirstTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        elderlyFirstTextField.setToolTipText("First Name");
         elderlyFirstTextField.setBorder(null);
         elderlyFirstTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -353,6 +355,7 @@ public class ElderlyInformation extends javax.swing.JFrame {
         elderlyMiddleTextField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         elderlyMiddleTextField.setForeground(new java.awt.Color(107, 132, 22));
         elderlyMiddleTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        elderlyMiddleTextField.setToolTipText("Middle Name");
         elderlyMiddleTextField.setBorder(null);
         elderlyMiddleTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -395,6 +398,7 @@ public class ElderlyInformation extends javax.swing.JFrame {
 
         elderlyAdmitDate.setBackground(new java.awt.Color(231, 228, 228));
         elderlyAdmitDate.setForeground(new java.awt.Color(107, 132, 22));
+        elderlyAdmitDate.setToolTipText("Admit Date");
         elderlyAdmitDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         personalInfoBG.add(elderlyAdmitDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 290, 40));
 
@@ -402,6 +406,7 @@ public class ElderlyInformation extends javax.swing.JFrame {
         elderlySuffix.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         elderlySuffix.setForeground(new java.awt.Color(107, 132, 22));
         elderlySuffix.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        elderlySuffix.setToolTipText("Suffix Name");
         elderlySuffix.setBorder(null);
         elderlySuffix.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -428,6 +433,7 @@ public class ElderlyInformation extends javax.swing.JFrame {
         elderlyContact.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         elderlyContact.setForeground(new java.awt.Color(107, 132, 22));
         elderlyContact.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        elderlyContact.setToolTipText("Contact Number");
         elderlyContact.setBorder(null);
         elderlyContact.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -459,6 +465,7 @@ public class ElderlyInformation extends javax.swing.JFrame {
         elderlyGuardian.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         elderlyGuardian.setForeground(new java.awt.Color(107, 132, 22));
         elderlyGuardian.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        elderlyGuardian.setToolTipText("Guardian Name");
         elderlyGuardian.setBorder(null);
         elderlyGuardian.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -491,6 +498,7 @@ public class ElderlyInformation extends javax.swing.JFrame {
         elderlyStreet.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         elderlyStreet.setForeground(new java.awt.Color(107, 132, 22));
         elderlyStreet.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        elderlyStreet.setToolTipText("Street");
         elderlyStreet.setBorder(null);
         elderlyStreet.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -517,6 +525,7 @@ public class ElderlyInformation extends javax.swing.JFrame {
         elderlyBrgy.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         elderlyBrgy.setForeground(new java.awt.Color(107, 132, 22));
         elderlyBrgy.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        elderlyBrgy.setToolTipText("Barangay");
         elderlyBrgy.setBorder(null);
         elderlyBrgy.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -543,6 +552,7 @@ public class ElderlyInformation extends javax.swing.JFrame {
         elderlyCity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         elderlyCity.setForeground(new java.awt.Color(107, 132, 22));
         elderlyCity.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        elderlyCity.setToolTipText("City");
         elderlyCity.setBorder(null);
         elderlyCity.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -569,6 +579,7 @@ public class ElderlyInformation extends javax.swing.JFrame {
         elderlyProvince.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         elderlyProvince.setForeground(new java.awt.Color(107, 132, 22));
         elderlyProvince.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        elderlyProvince.setToolTipText("Province");
         elderlyProvince.setBorder(null);
         elderlyProvince.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -599,6 +610,7 @@ public class ElderlyInformation extends javax.swing.JFrame {
 
         elderlyBirthdate.setBackground(new java.awt.Color(231, 228, 228));
         elderlyBirthdate.setForeground(new java.awt.Color(107, 132, 22));
+        elderlyBirthdate.setToolTipText("Birth Date");
         elderlyBirthdate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         elderlyBirthdate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -611,6 +623,7 @@ public class ElderlyInformation extends javax.swing.JFrame {
         elderlyAttendantID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         elderlyAttendantID.setForeground(new java.awt.Color(107, 132, 22));
         elderlyAttendantID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        elderlyAttendantID.setToolTipText("Attendant ID");
         elderlyAttendantID.setBorder(null);
         elderlyAttendantID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -649,6 +662,7 @@ public class ElderlyInformation extends javax.swing.JFrame {
         elderlyGender.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         elderlyGender.setForeground(new java.awt.Color(107, 132, 22));
         elderlyGender.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        elderlyGender.setToolTipText("Gender");
         elderlyGender.setBorder(null);
         elderlyGender.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -681,6 +695,7 @@ public class ElderlyInformation extends javax.swing.JFrame {
         elderlyRoomNo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         elderlyRoomNo.setForeground(new java.awt.Color(107, 132, 22));
         elderlyRoomNo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        elderlyRoomNo.setToolTipText("Room Number");
         elderlyRoomNo.setBorder(null);
         elderlyRoomNo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {

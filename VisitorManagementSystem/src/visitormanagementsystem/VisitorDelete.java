@@ -51,6 +51,7 @@ public class VisitorDelete extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("St. Jude Care Facility");
+        setIconImage(logo.getImage());
         setName("dashboardFrame"); // NOI18N
         setUndecorated(true);
         setResizable(false);
@@ -92,7 +93,7 @@ public class VisitorDelete extends javax.swing.JFrame {
         visitorID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         visitorID.setForeground(new java.awt.Color(107, 132, 22));
         visitorID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        visitorID.setToolTipText("Last Name");
+        visitorID.setToolTipText("Visitor ID");
         visitorID.setBorder(null);
         visitorID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

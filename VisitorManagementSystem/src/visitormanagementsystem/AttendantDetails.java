@@ -88,6 +88,7 @@ public class AttendantDetails extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("St. Jude Care Facility");
+        setIconImage(logo.getImage());
         setName("dashboardFrame"); // NOI18N
         setUndecorated(true);
         setResizable(false);
@@ -315,6 +316,7 @@ public class AttendantDetails extends javax.swing.JFrame {
         attendantFirstTextField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         attendantFirstTextField.setForeground(new java.awt.Color(107, 132, 22));
         attendantFirstTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        attendantFirstTextField.setToolTipText("First Name");
         attendantFirstTextField.setBorder(null);
         attendantFirstTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -341,6 +343,7 @@ public class AttendantDetails extends javax.swing.JFrame {
         attendantMiddleTextField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         attendantMiddleTextField.setForeground(new java.awt.Color(107, 132, 22));
         attendantMiddleTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        attendantMiddleTextField.setToolTipText("First Name");
         attendantMiddleTextField.setBorder(null);
         attendantMiddleTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -367,6 +370,7 @@ public class AttendantDetails extends javax.swing.JFrame {
         attendantSuffix.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         attendantSuffix.setForeground(new java.awt.Color(107, 132, 22));
         attendantSuffix.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        attendantSuffix.setToolTipText("Suffix Name");
         attendantSuffix.setBorder(null);
         attendantSuffix.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -391,6 +395,7 @@ public class AttendantDetails extends javax.swing.JFrame {
 
         attendantBirthdate.setBackground(new java.awt.Color(231, 228, 228));
         attendantBirthdate.setForeground(new java.awt.Color(107, 132, 22));
+        attendantBirthdate.setToolTipText("Birth Date");
         attendantBirthdate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         personalInfoBG.add(attendantBirthdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 230, 40));
 
@@ -398,6 +403,7 @@ public class AttendantDetails extends javax.swing.JFrame {
         attendantContact.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         attendantContact.setForeground(new java.awt.Color(107, 132, 22));
         attendantContact.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        attendantContact.setToolTipText("Contact Number");
         attendantContact.setBorder(null);
         attendantContact.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -429,6 +435,7 @@ public class AttendantDetails extends javax.swing.JFrame {
         attendantGender.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         attendantGender.setForeground(new java.awt.Color(107, 132, 22));
         attendantGender.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        attendantGender.setToolTipText("Gender");
         attendantGender.setBorder(null);
         attendantGender.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1005,6 +1012,7 @@ public class AttendantDetails extends javax.swing.JFrame {
 
     private void attendantAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attendantAddButtonActionPerformed
         try{
+            //inputting data in the textfields and clicking the add button will add the attendant details
             Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
             PreparedStatement pst = con.prepareStatement("INSERT INTO attendant (FirstName, MiddleName, LastName, SuffixName, Gender, BirthDate, ContactNo) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
@@ -1058,6 +1066,7 @@ public class AttendantDetails extends javax.swing.JFrame {
          String database = "SELECT attendant.AttendantID, attendant.FirstName, attendant.MiddleName, attendant.LastName, attendant.SuffixName, attendant.Gender, attendant.BirthDate, attendant.ContactNo FROM attendant";
          
          try{
+             //by clicking the add button, it will update the contents of the table
              Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
              PreparedStatement pst = con.prepareStatement(database);
              ResultSet rs = pst.executeQuery();
@@ -1094,7 +1103,8 @@ public class AttendantDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_attendantUpdateButtonMouseClicked
 
     private void attendantUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attendantUpdateButtonActionPerformed
-         AttendantUpdate attendantUpdate = new AttendantUpdate();
+        //it will go to the AttendantUpdate JFrame 
+        AttendantUpdate attendantUpdate = new AttendantUpdate();
          attendantUpdate.setVisible(true);
          this.setVisible(false);
     }//GEN-LAST:event_attendantUpdateButtonActionPerformed
@@ -1123,7 +1133,8 @@ public class AttendantDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_attendantDeleteButtonMouseClicked
 
     private void attendantDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attendantDeleteButtonActionPerformed
-         AttendantDelete attendantDelete = new AttendantDelete();
+        //It will go to the AttendantDelete JFrame
+        AttendantDelete attendantDelete = new AttendantDelete();
          attendantDelete.setVisible(true);
          this.setVisible(false);
     }//GEN-LAST:event_attendantDeleteButtonActionPerformed

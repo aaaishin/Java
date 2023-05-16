@@ -51,6 +51,7 @@ public class AttendantDelete extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("St. Jude Care Facility");
+        setIconImage(logo.getImage());
         setName("dashboardFrame"); // NOI18N
         setUndecorated(true);
         setResizable(false);
@@ -92,7 +93,7 @@ public class AttendantDelete extends javax.swing.JFrame {
         attendantID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         attendantID.setForeground(new java.awt.Color(107, 132, 22));
         attendantID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        attendantID.setToolTipText("Last Name");
+        attendantID.setToolTipText("Attendant ID");
         attendantID.setBorder(null);
         attendantID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -166,6 +167,7 @@ public class AttendantDelete extends javax.swing.JFrame {
 
     private void attendantDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attendantDeleteButtonActionPerformed
         try{
+            //Connection for PHP(Database)
             Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
             PreparedStatement pst = con.prepareStatement("DELETE FROM attendant WHERE AttendantID = ?");
             
@@ -191,6 +193,7 @@ public class AttendantDelete extends javax.swing.JFrame {
          String database = "SELECT attendant.AttendantID, attendant.FirstName, attendant.MiddleName, attendant.LastName, attendant.SuffixName, attendant.Gender, attendant.BirthDate, attendant.ContactNo FROM attendant";
          
          try{
+             //When clicking the delete button, it will go back to the attendantdetails and will delete the data you inputted
              Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
              PreparedStatement pst = con.prepareStatement(database);
              ResultSet rs = pst.executeQuery();
@@ -236,6 +239,7 @@ public class AttendantDelete extends javax.swing.JFrame {
          String database = "SELECT attendant.AttendantID, attendant.FirstName, attendant.MiddleName, attendant.LastName, attendant.SuffixName, attendant.Gender, attendant.BirthDate, attendant.ContactNo FROM attendant";
          
          try{
+             //going back to attendantdetails and seeing the table contents
              Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
              PreparedStatement pst = con.prepareStatement(database);
              ResultSet rs = pst.executeQuery();

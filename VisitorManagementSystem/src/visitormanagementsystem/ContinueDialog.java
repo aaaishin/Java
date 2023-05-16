@@ -44,6 +44,7 @@ public class ContinueDialog extends javax.swing.JFrame {
         continueDialogbg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(logo.getImage());
         setName("exitDialog"); // NOI18N
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

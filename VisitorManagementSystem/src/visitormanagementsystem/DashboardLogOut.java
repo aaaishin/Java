@@ -49,6 +49,7 @@ public class DashboardLogOut extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("St. Jude Care Facility");
+        setIconImage(logo.getImage());
         setName("dashboardFrame"); // NOI18N
         setUndecorated(true);
         setResizable(false);
@@ -163,6 +164,7 @@ public class DashboardLogOut extends javax.swing.JFrame {
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         Dashboard dashboard = new Dashboard();
         try{
+            //it will count the data in the PHP and displaying it in setText
             String database = "SELECT COUNT(*) AS visitorCount FROM visitor";
             Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
             PreparedStatement pst = con.prepareStatement(database);

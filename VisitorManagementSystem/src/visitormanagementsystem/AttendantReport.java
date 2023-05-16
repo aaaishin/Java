@@ -74,6 +74,7 @@ public class AttendantReport extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("St. Jude Care Facility");
+        setIconImage(logo.getImage());
         setName("dashboardFrame"); // NOI18N
         setUndecorated(true);
         setResizable(false);
@@ -932,6 +933,7 @@ public class AttendantReport extends javax.swing.JFrame {
     }//GEN-LAST:event_printReportMouseClicked
 
     private void printReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printReportActionPerformed
+        //it will show a JasperReport that contains the contents of the table of attendant
         String database = "SELECT attendant.AttendantID, attendant.FirstName, attendant.MiddleName, attendant.LastName, attendant.SuffixName, attendant.Gender, attendant.BirthDate, attendant.ContactNo, elderly.ElderlyID FROM attendant JOIN elderly ON attendant.AttendantID = elderly.AttendantID";
         try{
              Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
@@ -965,6 +967,7 @@ public class AttendantReport extends javax.swing.JFrame {
     }//GEN-LAST:event_searchFieldMousePressed
 
     private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
+        //the function of this search is when typing a word it will sort it and displaying the correct info that you want to search
         String search = searchField.getText();
         search(search);
     }//GEN-LAST:event_searchFieldKeyReleased
@@ -986,6 +989,7 @@ public class AttendantReport extends javax.swing.JFrame {
     }
     
     public void search(String str){
+        //this search will sort the attendant table
         DefaultTableModel table = (DefaultTableModel) attendantTable.getModel();
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(table);
         attendantTable.setRowSorter(trs);

@@ -51,6 +51,7 @@ public class ElderlyDelete extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("St. Jude Care Facility");
+        setIconImage(logo.getImage());
         setName("dashboardFrame"); // NOI18N
         setUndecorated(true);
         setResizable(false);
@@ -92,7 +93,7 @@ public class ElderlyDelete extends javax.swing.JFrame {
         elderlyID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         elderlyID.setForeground(new java.awt.Color(107, 132, 22));
         elderlyID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        elderlyID.setToolTipText("Last Name");
+        elderlyID.setToolTipText("Elderly ID");
         elderlyID.setBorder(null);
         elderlyID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

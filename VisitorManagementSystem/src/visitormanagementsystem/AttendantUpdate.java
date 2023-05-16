@@ -71,6 +71,7 @@ public class AttendantUpdate extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("St. Jude Care Facility");
+        setIconImage(logo.getImage());
         setName("dashboardFrame"); // NOI18N
         setUndecorated(true);
         setResizable(false);
@@ -118,7 +119,7 @@ public class AttendantUpdate extends javax.swing.JFrame {
         attendantID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         attendantID.setForeground(new java.awt.Color(107, 132, 22));
         attendantID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        attendantID.setToolTipText("Last Name");
+        attendantID.setToolTipText("Attendant ID");
         attendantID.setBorder(null);
         attendantID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -171,6 +172,7 @@ public class AttendantUpdate extends javax.swing.JFrame {
         attendantFirstTextField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         attendantFirstTextField.setForeground(new java.awt.Color(107, 132, 22));
         attendantFirstTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        attendantFirstTextField.setToolTipText("First Name");
         attendantFirstTextField.setBorder(null);
         attendantFirstTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -197,6 +199,7 @@ public class AttendantUpdate extends javax.swing.JFrame {
         attendantMiddleTextField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         attendantMiddleTextField.setForeground(new java.awt.Color(107, 132, 22));
         attendantMiddleTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        attendantMiddleTextField.setToolTipText("Middle Name");
         attendantMiddleTextField.setBorder(null);
         attendantMiddleTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -223,6 +226,7 @@ public class AttendantUpdate extends javax.swing.JFrame {
         attendantSuffix.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         attendantSuffix.setForeground(new java.awt.Color(107, 132, 22));
         attendantSuffix.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        attendantSuffix.setToolTipText("Suffix Name");
         attendantSuffix.setBorder(null);
         attendantSuffix.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -247,6 +251,7 @@ public class AttendantUpdate extends javax.swing.JFrame {
 
         attendantBirthdate.setBackground(new java.awt.Color(231, 228, 228));
         attendantBirthdate.setForeground(new java.awt.Color(107, 132, 22));
+        attendantBirthdate.setToolTipText("Birth Date");
         attendantBirthdate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         personalInfoBG.add(attendantBirthdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 230, 40));
 
@@ -254,6 +259,7 @@ public class AttendantUpdate extends javax.swing.JFrame {
         attendantContact.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         attendantContact.setForeground(new java.awt.Color(107, 132, 22));
         attendantContact.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        attendantContact.setToolTipText("Contact Number");
         attendantContact.setBorder(null);
         attendantContact.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -285,6 +291,7 @@ public class AttendantUpdate extends javax.swing.JFrame {
         attendantGender.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         attendantGender.setForeground(new java.awt.Color(107, 132, 22));
         attendantGender.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        attendantGender.setToolTipText("Gender");
         attendantGender.setBorder(null);
         attendantGender.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -449,6 +456,7 @@ public class AttendantUpdate extends javax.swing.JFrame {
 
     private void attendantUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attendantUpdateButtonActionPerformed
         try{
+            //it will update the existing data and display the table when clicking the update button
             Connection con = DriverManager.getConnection(DatabaseConnection.DB_CONNECTION,"root","root");
             PreparedStatement pst = con.prepareStatement("UPDATE attendant SET LastName = ?, FirstName = ?, MiddleName = ?, SuffixName = ?, Gender = ?, BirthDate = ?, ContactNo = ? WHERE AttendantID = ?");
 
